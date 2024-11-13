@@ -13,7 +13,7 @@ import '../resources/values_manager.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   _LoginViewState createState() => _LoginViewState();
@@ -27,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  _bind() {
+  void _bind() {
     _viewModel.start();
     _userNameController
         .addListener(() => _viewModel.setUserName(_userNameController.text));

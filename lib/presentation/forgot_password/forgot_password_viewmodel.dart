@@ -26,7 +26,7 @@ class ForgotPasswordViewModel extends BaseViewModel
   }
 
   @override
-  forgotPassword() async {
+  Future<void> forgotPassword() async {
     inputState.add(
         LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE));
     (await _forgotPasswordUseCase.execute(email)).fold((failure) {
@@ -38,7 +38,7 @@ class ForgotPasswordViewModel extends BaseViewModel
   }
 
   @override
-  setEmail(String email) {
+  void setEmail(String email) {
     inputEmail.add(email);
     this.email = email;
     _validate();
@@ -70,22 +70,22 @@ class ForgotPasswordViewModel extends BaseViewModel
     return isEmailValid(email);
   }
 
-  _validate() {
+  void _validate() {
     inputIsAllInputValid.add(null);
   }
 }
 
-abstract class ForgotPasswordViewModelInput {
-  forgotPassword();
+mixin ForgotPasswordViewModelInput {
+  void forgotPassword();
 
-  setEmail(String email);
+  void setEmail(String email);
 
   Sink get inputEmail;
 
   Sink get inputIsAllInputValid;
 }
 
-abstract class ForgotPasswordViewModelOutput {
+mixin ForgotPasswordViewModelOutput {
   Stream<bool> get outputIsEmailValid;
 
   Stream<bool> get outputIsAllInputValid;

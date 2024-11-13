@@ -118,7 +118,7 @@ class LoginViewModel extends BaseViewModel
   }
 }
 
-abstract class LoginViewModelInputs {
+mixin LoginViewModelInputs {
   // three functions for actions
   void setUserName(String userName);
 
@@ -134,7 +134,7 @@ abstract class LoginViewModelInputs {
   Sink get inputIsAllInputValid;
 }
 
-abstract class LoginViewModelOutputs {
+mixin LoginViewModelOutputs {
   Stream<bool> get outputIsUserNameValid;
 
   Stream<bool> get outputIsPasswordValid;

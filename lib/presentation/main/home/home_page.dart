@@ -12,7 +12,7 @@ import '../../resources/values_manager.dart';
 import 'home_viewmodel.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();

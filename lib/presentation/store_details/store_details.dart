@@ -10,7 +10,7 @@ import '../resources/values_manager.dart';
 import 'store_details_viewmodel.dart';
 
 class StoreDetailsView extends StatefulWidget {
-  const StoreDetailsView({Key? key}) : super(key: key);
+  const StoreDetailsView({super.key});
 
   @override
   _StoreDetailsViewState createState() => _StoreDetailsViewState();
@@ -25,7 +25,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
     super.initState();
   }
 
-  bind() {
+  void bind() {
     _viewModel.start();
   }
 

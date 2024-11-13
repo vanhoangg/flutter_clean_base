@@ -44,7 +44,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  register() async {
+  Future<void> register() async {
     inputState.add(
         LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE));
     (await _registerUseCase.execute(RegisterUseCaseInput(
@@ -82,7 +82,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setCountryCode(String countryCode) {
+  void setCountryCode(String countryCode) {
     if (countryCode.isNotEmpty) {
       // update register view object with countryCode value
       registerViewObject = registerViewObject.copyWith(
@@ -95,7 +95,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setEmail(String email) {
+  void setEmail(String email) {
     inputEmail.add(email);
     if (isEmailValid(email)) {
       // update register view object with email value
@@ -109,7 +109,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setMobileNumber(String mobileNumber) {
+  void setMobileNumber(String mobileNumber) {
     inputMobileNumber.add(mobileNumber);
     if (_isMobileNumberValid(mobileNumber)) {
       // update register view object with mobileNumber value
@@ -123,7 +123,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setPassword(String password) {
+  void setPassword(String password) {
     inputUPassword.add(password);
     if (_isPasswordValid(password)) {
       // update register view object with password value
@@ -137,7 +137,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setProfilePicture(File file) {
+  void setProfilePicture(File file) {
     inputProfilePicture.add(file);
     if (file.path.isNotEmpty) {
       // update register view object with profilePicture value
@@ -151,7 +151,7 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setUserName(String userName) {
+  void setUserName(String userName) {
     inputUserName.add(userName);
     if (_isUserNameValid(userName)) {
       // update register view object with username value
@@ -248,25 +248,25 @@ class RegisterViewModel extends BaseViewModel
         registerViewObject.countryMobileCode.isNotEmpty;
   }
 
-  _validate() {
+  void _validate() {
     inputAllInputsValid.add(null);
   }
 }
 
-abstract class RegisterViewModelInput {
-  register();
+mixin RegisterViewModelInput {
+  void register();
 
-  setUserName(String userName);
+  void setUserName(String userName);
 
-  setMobileNumber(String mobileNumber);
+  void setMobileNumber(String mobileNumber);
 
-  setCountryCode(String countryCode);
+  void setCountryCode(String countryCode);
 
-  setEmail(String email);
+  void setEmail(String email);
 
-  setPassword(String password);
+  void setPassword(String password);
 
-  setProfilePicture(File file);
+  void setProfilePicture(File file);
 
   Sink get inputUserName;
 
@@ -281,7 +281,7 @@ abstract class RegisterViewModelInput {
   Sink get inputAllInputsValid;
 }
 
-abstract class RegisterViewModelOutput {
+mixin RegisterViewModelOutput {
   Stream<bool> get outputIsUserNameValid;
 
   Stream<String?> get outputErrorUserName;

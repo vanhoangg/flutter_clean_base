@@ -50,10 +50,10 @@ class StoreDetailsViewModel extends BaseViewModel
       _storeDetailsStreamController.stream.map((stores) => stores);
 }
 
-abstract class StoreDetailsViewModelInput {
+mixin StoreDetailsViewModelInput {
   Sink get inputStoreDetails;
 }
 
-abstract class StoreDetailsViewModelOutput {
+mixin StoreDetailsViewModelOutput {
   Stream<StoreDetails> get outputStoreDetails;
 }

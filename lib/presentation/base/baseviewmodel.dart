@@ -31,6 +31,6 @@ abstract class BaseViewModelInputs {
   Sink get inputState;
 }
 
-abstract class BaseViewModelOutputs {
+mixin BaseViewModelOutputs {
   Stream<FlowState> get outputState;
 }

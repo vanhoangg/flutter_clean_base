@@ -120,7 +120,7 @@ class RepositoryImpl extends Repository {
             // return data (success)
             // return right
             // save response to local data source
-            _localDataSource.saveHomeToCache(response);
+            await _localDataSource.saveHomeToCache(response);
             return Right(response.toDomain());
           } else {
             // return biz logic error
@@ -150,7 +150,7 @@ class RepositoryImpl extends Repository {
         try {
           final response = await _remoteDataSource.getStoreDetails();
           if (response.status == ApiInternalStatus.SUCCESS) {
-            _localDataSource.saveStoreDetailsToCache(response);
+            await _localDataSource.saveStoreDetailsToCache(response);
             return Right(response.toDomain());
           } else {
             return Left(Failure(response.status ?? ResponseCode.DEFAULT,

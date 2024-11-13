@@ -147,7 +147,7 @@ extension FlowStateExtension on FlowState {
     }
   }
 
-  dismissDialog(BuildContext context) {
+  void dismissDialog(BuildContext context) {
     if (_isThereCurrentDialogShowing(context)) {
       Navigator.of(context, rootNavigator: true).pop(true);
     }
@@ -156,7 +156,7 @@ extension FlowStateExtension on FlowState {
   bool _isThereCurrentDialogShowing(BuildContext context) =>
       ModalRoute.of(context)?.isCurrent != true;
 
-  showPopUp(
+  void showPopUp(
       BuildContext context, StateRendererType stateRendererType, String message,
       {String title = EMPTY}) {
     WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(

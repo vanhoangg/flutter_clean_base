@@ -23,7 +23,7 @@ class HomeViewModel extends BaseViewModel
     _getHome();
   }
 
-  _getHome() async {
+  Future<void> _getHome() async {
     inputState.add(LoadingState(
         stateRendererType: StateRendererType.FULL_SCREEN_LOADING_STATE));
 
@@ -52,11 +52,11 @@ class HomeViewModel extends BaseViewModel
       _dataStreamController.stream.map((data) => data);
 }
 
-abstract class HomeViewModelInputs {
+mixin HomeViewModelInputs {
   Sink get inputHomeData;
 }
 
-abstract class HomeViewModelOutputs {
+mixin HomeViewModelOutputs {
   Stream<HomeViewObject> get outputHomeData;
 }
 

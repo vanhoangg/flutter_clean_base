@@ -15,7 +15,7 @@ import '../resources/values_manager.dart';
 import 'onboarding_viewmodel.dart';
 
 class OnBoardingView extends StatefulWidget {
-  const OnBoardingView({Key? key}) : super(key: key);
+  const OnBoardingView({super.key});
 
   @override
   _OnBoardingViewState createState() => _OnBoardingViewState();
@@ -26,7 +26,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
   final AppPreferences _appPreferences = instance<AppPreferences>();
 
-  _bind() {
+  void _bind() {
     _appPreferences.setOnBoardingScreenViewed();
     _viewModel.start();
   }
@@ -115,7 +115,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               onTap: () {
                 // go to previous slide
                 _pageController.animateToPage(_viewModel.goPrevious(),
-                    duration: const Duration(milliseconds: DurationConstant.d300),
+                    duration:
+                        const Duration(milliseconds: DurationConstant.d300),
                     curve: Curves.bounceInOut);
               },
             ),
@@ -144,7 +145,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               onTap: () {
                 // go to next slide
                 _pageController.animateToPage(_viewModel.goNext(),
-                    duration: const Duration(milliseconds: DurationConstant.d300),
+                    duration:
+                        const Duration(milliseconds: DurationConstant.d300),
                     curve: Curves.bounceInOut);
               },
             ),
@@ -172,7 +174,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 class OnBoardingPage extends StatelessWidget {
   final SliderObject _sliderObject;
 
-  const OnBoardingPage(this._sliderObject, {Key? key}) : super(key: key);
+  const OnBoardingPage(this._sliderObject, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -10,7 +10,7 @@ import 'search_page.dart';
 import 'settings_page.dart';
 
 class MainView extends StatefulWidget {
-  const MainView({Key? key}) : super(key: key);
+  const MainView({super.key});
 
   @override
   _MainViewState createState() => _MainViewState();
@@ -60,14 +60,15 @@ class _MainViewState extends State<MainView> {
                 icon: const Icon(Icons.notifications),
                 label: AppStrings.notifications.tr()),
             BottomNavigationBarItem(
-                icon: const Icon(Icons.settings), label: AppStrings.settings.tr()),
+                icon: const Icon(Icons.settings),
+                label: AppStrings.settings.tr()),
           ],
         ),
       ),
     );
   }
 
-  onTap(int index) {
+  void onTap(int index) {
     setState(() {
       _currentIndex = index;
       _title = titles[index];

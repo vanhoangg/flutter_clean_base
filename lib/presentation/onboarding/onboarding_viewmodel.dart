@@ -65,32 +65,24 @@ class OnBoardingViewModel extends BaseViewModel
 
   // private functions
   List<SliderObject> _getSliderData() => [
-        SliderObject(
-            AppStrings.onBoardingTitle1.tr(),
-            AppStrings.onBoardingSubTitle1.tr(),
-            ImageAssets.onboardingLogo1),
-        SliderObject(
-            AppStrings.onBoardingTitle2.tr(),
-            AppStrings.onBoardingSubTitle2.tr(),
-            ImageAssets.onboardingLogo2),
-        SliderObject(
-            AppStrings.onBoardingTitle3.tr(),
-            AppStrings.onBoardingSubTitle3.tr(),
-            ImageAssets.onboardingLogo3),
-        SliderObject(
-            AppStrings.onBoardingTitle4.tr(),
-            AppStrings.onBoardingSubTitle4.tr(),
-            ImageAssets.onboardingLogo4)
+        SliderObject(AppStrings.onBoardingTitle1.tr(),
+            AppStrings.onBoardingSubTitle1.tr(), ImageAssets.onboardingLogo1),
+        SliderObject(AppStrings.onBoardingTitle2.tr(),
+            AppStrings.onBoardingSubTitle2.tr(), ImageAssets.onboardingLogo2),
+        SliderObject(AppStrings.onBoardingTitle3.tr(),
+            AppStrings.onBoardingSubTitle3.tr(), ImageAssets.onboardingLogo3),
+        SliderObject(AppStrings.onBoardingTitle4.tr(),
+            AppStrings.onBoardingSubTitle4.tr(), ImageAssets.onboardingLogo4)
       ];
 
-  _postDataToView() {
+  void _postDataToView() {
     inputSliderViewObject.add(
         SliderViewObject(_list[_currentIndex], _list.length, _currentIndex));
   }
 }
 
 // inputs mean the orders that our view model will recieve from our view
-abstract class OnBoardingViewModelInputs {
+mixin OnBoardingViewModelInputs {
   void goNext(); // when user clicks on right arrow or swipe left.
   void goPrevious(); // when user clicks on left arrow or swipe right.
   void onPageChanged(int index);
@@ -100,7 +92,7 @@ abstract class OnBoardingViewModelInputs {
 }
 
 // outputs mean data or results that will be sent from our view model to our view
-abstract class OnBoardingViewModelOutputs {
+mixin OnBoardingViewModelOutputs {
   Stream<SliderViewObject> get outputSliderViewObject;
 }
 

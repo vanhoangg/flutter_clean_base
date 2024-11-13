@@ -10,7 +10,7 @@ import '../resources/values_manager.dart';
 import 'forgot_password_viewmodel.dart';
 
 class ForgotPasswordView extends StatefulWidget {
-  const ForgotPasswordView({Key? key}) : super(key: key);
+  const ForgotPasswordView({super.key});
 
   @override
   _ForgotPasswordViewState createState() => _ForgotPasswordViewState();
@@ -24,7 +24,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   final ForgotPasswordViewModel _viewModel =
       instance<ForgotPasswordViewModel>();
 
-  bind() {
+  void bind() {
     _viewModel.start();
     _emailTextEditingController.addListener(
         () => _viewModel.setEmail(_emailTextEditingController.text));

@@ -15,7 +15,7 @@ import '../resources/strings_manager.dart';
 import '../resources/values_manager.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   _SettingsPageState createState() => _SettingsPageState();

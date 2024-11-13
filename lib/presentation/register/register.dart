@@ -19,7 +19,7 @@ import '../resources/values_manager.dart';
 import 'register_viewmodel.dart';
 
 class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+  const RegisterView({super.key});
 
   @override
   _RegisterViewState createState() => _RegisterViewState();
@@ -36,7 +36,8 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _mobileNumberTextEditingController =
       TextEditingController();
   final TextEditingController _emailEditingController = TextEditingController();
-  final TextEditingController _passwordEditingController = TextEditingController();
+  final TextEditingController _passwordEditingController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -44,7 +45,7 @@ class _RegisterViewState extends State<RegisterView> {
     super.initState();
   }
 
-  _bind() {
+  void _bind() {
     _viewModel.start();
     _userNameTextEditingController.addListener(() {
       _viewModel.setUserName(_userNameTextEditingController.text);
@@ -287,7 +288,7 @@ class _RegisterViewState extends State<RegisterView> {
     }
   }
 
-  _showPicker(BuildContext context) {
+  void _showPicker(BuildContext context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
@@ -318,12 +319,12 @@ class _RegisterViewState extends State<RegisterView> {
         });
   }
 
-  _imageFormGallery() async {
+  Future<void> _imageFormGallery() async {
     final image = await picker.pickImage(source: ImageSource.gallery);
     _viewModel.setProfilePicture(File(image?.path ?? ''));
   }
 
-  _imageFormCamera() async {
+  Future<void> _imageFormCamera() async {
     final image = await picker.pickImage(source: ImageSource.camera);
     _viewModel.setProfilePicture(File(image?.path ?? ''));
   }

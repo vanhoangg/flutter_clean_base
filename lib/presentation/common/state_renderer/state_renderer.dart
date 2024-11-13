@@ -31,12 +31,11 @@ class StateRenderer extends StatelessWidget {
   StateRenderer(
       {required this.stateRendererType,
       required this.retryActionFunction,
-      Key? key,
+      super.key,
       String? message,
       String? title})
       : message = message ?? AppStrings.loading.tr(),
-        title = title ?? EMPTY,
-        super(key: key);
+        title = title ?? EMPTY;
 
   @override
   Widget build(BuildContext context) {
