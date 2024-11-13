@@ -1,0 +1,7 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_stg.dart
+ASSET_PREFIX=stg
+BUNDLE_NAME=Biv App STG
+BUNDLE_DISPLAY_NAME=Biv App STG
