@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,8 +35,9 @@ Future<void> initAppModule() async {
       .registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
 
   // network info
+  final connectivityResult = await Connectivity().checkConnectivity();
   instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(DataConnectionChecker()));
+      () => NetworkInfoImpl(connectivityResult));
 
   // dio factory
   instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));

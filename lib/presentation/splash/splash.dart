@@ -19,11 +19,11 @@ class _SplashViewState extends State<SplashView> {
   Timer? _timer;
   final AppPreferences _appPreferences = instance<AppPreferences>();
 
-  _startDelay() {
+  void _startDelay() {
     _timer = Timer(const Duration(seconds: 2), _goNext);
   }
 
-  _goNext() async {
+  Future<void> _goNext() async {
     _appPreferences.isUserLoggedIn().then((isUserLoggedIn) => {
           if (isUserLoggedIn)
             {

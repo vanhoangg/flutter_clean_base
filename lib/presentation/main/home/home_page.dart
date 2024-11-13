@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  _bind() {
+  void _bind() {
     _viewModel.start();
   }
 
@@ -63,7 +63,6 @@ class _HomePageState extends State<HomePage> {
               _getStoresWidget(snapshot.data?.stores),
             ],
           );
-          ;
         });
   }
 
@@ -116,7 +115,8 @@ class _HomePageState extends State<HomePage> {
   Widget _getServicesWidget(List<Service>? services) {
     if (services != null) {
       return Padding(
-        padding: const EdgeInsets.only(left: AppPadding.p12, right: AppPadding.p12),
+        padding:
+            const EdgeInsets.only(left: AppPadding.p12, right: AppPadding.p12),
         child: Container(
           height: AppSize.s140,
           margin: const EdgeInsets.symmetric(vertical: AppMargin.m12),

@@ -9,14 +9,15 @@ import '../common/state_renderer/state_renderer.dart';
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
   final StreamController _userNameStreamController =
-  StreamController<String>.broadcast();
+      StreamController<String>.broadcast();
   final StreamController _passwordStreamController =
-  StreamController<String>.broadcast();
+      StreamController<String>.broadcast();
 
   final StreamController _isAllInputsValidStreamController =
-  StreamController<void>.broadcast();
+      StreamController<void>.broadcast();
 
-  StreamController isUserLoggedInSuccessfullyStreamController = StreamController<String>();
+  StreamController isUserLoggedInSuccessfullyStreamController =
+      StreamController<String>();
 
   var loginObject = LoginObject('', '');
 
@@ -49,29 +50,27 @@ class LoginViewModel extends BaseViewModel
   Sink get inputIsAllInputValid => _isAllInputsValidStreamController.sink;
 
   @override
-  login() async {
+  Future<void> login() async {
     inputState.add(
         LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE));
     (await _loginUseCase.execute(
-        LoginUseCaseInput(loginObject.userName, loginObject.password)))
+            LoginUseCaseInput(loginObject.userName, loginObject.password)))
         .fold(
-            (failure) =>
-        {
-          // left -> failure
-          inputState.add(ErrorState(
-              StateRendererType.POPUP_ERROR_STATE, failure.message))
-        },
-            (data) {
-          // right -> success (data)
-          inputState.add(ContentState());
+            (failure) => {
+                  // left -> failure
+                  inputState.add(ErrorState(
+                      StateRendererType.POPUP_ERROR_STATE, failure.message))
+                }, (data) {
+      // right -> success (data)
+      inputState.add(ContentState());
 
-          // navigate to main screen after the login
-          isUserLoggedInSuccessfullyStreamController.add('abcdefgh');
-        });
+      // navigate to main screen after the login
+      isUserLoggedInSuccessfullyStreamController.add('abcdefgh');
+    });
   }
 
   @override
-  setPassword(String password) {
+  void setPassword(String password) {
     inputPassword.add(password);
     loginObject = loginObject.copyWith(
         password: password); // data class operation same as kotlin
@@ -79,7 +78,7 @@ class LoginViewModel extends BaseViewModel
   }
 
   @override
-  setUserName(String userName) {
+  void setUserName(String userName) {
     inputUserName.add(userName);
     loginObject = loginObject.copyWith(
         userName: userName); // data class operation same as kotlin
@@ -88,14 +87,12 @@ class LoginViewModel extends BaseViewModel
 
   // outputs
   @override
-  Stream<bool> get outputIsPasswordValid =>
-      _passwordStreamController.stream
-          .map((password) => _isPasswordValid(password));
+  Stream<bool> get outputIsPasswordValid => _passwordStreamController.stream
+      .map((password) => _isPasswordValid(password));
 
   @override
-  Stream<bool> get outputIsUserNameValid =>
-      _userNameStreamController.stream
-          .map((userName) => _isUserNameValid(userName));
+  Stream<bool> get outputIsUserNameValid => _userNameStreamController.stream
+      .map((userName) => _isUserNameValid(userName));
 
   @override
   Stream<bool> get outputIsAllInputsValid =>
@@ -103,7 +100,7 @@ class LoginViewModel extends BaseViewModel
 
   // private functions
 
-  _validate() {
+  void _validate() {
     inputIsAllInputValid.add(null);
   }
 
@@ -123,11 +120,11 @@ class LoginViewModel extends BaseViewModel
 
 abstract class LoginViewModelInputs {
   // three functions for actions
-  setUserName(String userName);
+  void setUserName(String userName);
 
-  setPassword(String password);
+  void setPassword(String password);
 
-  login();
+  void login();
 
 // two sinks for streams
   Sink get inputUserName;
