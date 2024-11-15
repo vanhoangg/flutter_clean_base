@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../domain/model/model.dart';
+import '../../domain/entity/entity.dart';
 import '../../domain/repository/repository.dart';
 import '../data_source/local_data_source.dart';
 import '../data_source/remote_data_source.dart';
@@ -19,7 +19,7 @@ class RepositoryImpl extends Repository {
       this._remoteDataSource, this._localDataSource, this._networkInfo);
 
   @override
-  Future<Either<Failure, Authentication>> login(
+  Future<Either<Failure, AuthenticationEntity>> login(
       LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
       try {
@@ -74,7 +74,7 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, Authentication>> register(
+  Future<Either<Failure, AuthenticationEntity>> register(
       RegisterRequest registerRequest) async {
     if (await _networkInfo.isConnected) {
       try {
@@ -102,7 +102,7 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, HomeObject>> getHome() async {
+  Future<Either<Failure, HomeObjectEntity>> getHome() async {
     try {
       // get from cache
       final response = await _localDataSource.getHome();
@@ -139,7 +139,7 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<Either<Failure, StoreDetails>> getStoreDetails() async {
+  Future<Either<Failure, StoreDetailsEntity>> getStoreDetails() async {
     try {
       // get data from cache
 

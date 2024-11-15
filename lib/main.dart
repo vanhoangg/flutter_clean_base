@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'app/app.dart';
 import 'app/di.dart';
-import 'presentation/resources/language_manager.dart';
+import 'shared/util/resources/language_manager.dart';
 
 FutureOr<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

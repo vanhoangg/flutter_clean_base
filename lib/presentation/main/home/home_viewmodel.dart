@@ -3,7 +3,7 @@ import 'dart:ffi';
 
 import 'package:rxdart/rxdart.dart';
 
-import '../../../domain/model/model.dart';
+import '../../../domain/entity/model.dart';
 import '../../../domain/usecase/home_usecase.dart';
 import '../../base/baseviewmodel.dart';
 import '../../common/state_renderer/state_render_impl.dart';
@@ -61,9 +61,9 @@ mixin HomeViewModelOutputs {
 }
 
 class HomeViewObject {
-  List<Store> stores;
-  List<Service> services;
-  List<BannerAd> banners;
+  List<StoreEntity> stores;
+  List<ServiceEntity> services;
+  List<BannerAdEntity> banners;
 
   HomeViewObject(this.stores, this.services, this.banners);
 }

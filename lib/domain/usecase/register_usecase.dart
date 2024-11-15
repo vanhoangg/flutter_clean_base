@@ -2,18 +2,18 @@ import 'package:dartz/dartz.dart';
 
 import '../../data/network/failure.dart';
 import '../../data/request/request.dart';
-import '../model/model.dart';
+import '../entity/model.dart';
 import '../repository/repository.dart';
 import 'base_usecase.dart';
 
 class RegisterUseCase
-    implements BaseUseCase<RegisterUseCaseInput, Authentication> {
+    implements BaseUseCase<RegisterUseCaseInput, AuthenticationEntity> {
   final Repository _repository;
 
   RegisterUseCase(this._repository);
 
   @override
-  Future<Either<Failure, Authentication>> execute(
+  Future<Either<Failure, AuthenticationEntity>> execute(
       RegisterUseCaseInput input) async {
     return await _repository.register(RegisterRequest(
         input.countryMobileCode,

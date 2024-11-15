@@ -6,12 +6,12 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../app/app_prefs.dart';
 import '../../app/di.dart';
-import '../../domain/model/model.dart';
-import '../resources/assets_manager.dart';
-import '../resources/color_manager.dart';
-import '../resources/routes_manager.dart';
-import '../resources/strings_manager.dart';
-import '../resources/values_manager.dart';
+import '../../domain/entity/model.dart';
+import '../../shared/util/resources/assets_manager.dart';
+import '../../shared/util/resources/color_manager.dart';
+import '../../shared/util/resources/routes_manager.dart';
+import '../../shared/util/resources/strings_manager.dart';
+import '../../shared/util/resources/values_manager.dart';
 import 'onboarding_viewmodel.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -172,7 +172,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 }
 
 class OnBoardingPage extends StatelessWidget {
-  final SliderObject _sliderObject;
+  final SliderObjectEntity _sliderObject;
 
   const OnBoardingPage(this._sliderObject, {super.key});
 

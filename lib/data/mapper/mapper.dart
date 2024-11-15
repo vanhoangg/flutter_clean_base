@@ -1,15 +1,16 @@
 import '../../app/extensions.dart';
-import '../../domain/model/model.dart';
+import '../../domain/entity/model.dart';
 // to convert the response into a non nullable object (model)
 
+import '../../domain/entity/store_details_entity.dart';
 import '../responses/responses.dart';
 
 const EMPTY = '';
 const ZERO = 0;
 
 extension CustomerResponseMapper on CustomerResponse? {
-  Customer toDomain() {
-    return Customer(
+  CustomerEntity toDomain() {
+    return CustomerEntity(
         this?.id?.orEmpty() ?? EMPTY,
         this?.name?.orEmpty() ?? EMPTY,
         this?.numOfNotifications?.orZero() ?? ZERO);
@@ -17,15 +18,15 @@ extension CustomerResponseMapper on CustomerResponse? {
 }
 
 extension ContactsResponseMapper on ContactsResponse? {
-  Contacts toDomain() {
-    return Contacts(this?.email?.orEmpty() ?? EMPTY,
+  ContactsEntity toDomain() {
+    return ContactsEntity(this?.email?.orEmpty() ?? EMPTY,
         this?.phone?.orEmpty() ?? EMPTY, this?.link?.orEmpty() ?? EMPTY);
   }
 }
 
 extension AuthenticationResponseMapper on AuthenticationResponse? {
-  Authentication toDomain() {
-    return Authentication(
+  AuthenticationEntity toDomain() {
+    return AuthenticationEntity(
         this?.customer?.toDomain(), this?.contacts?.toDomain());
   }
 }
@@ -37,54 +38,57 @@ extension ForgotPasswordResponseMapper on ForgotPasswordResponse? {
 }
 
 extension ServiceResponseMapper on ServiceResponse? {
-  Service toDomain() {
-    return Service(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
-        this?.image?.orEmpty() ?? EMPTY);
+  ServiceEntity toDomain() {
+    return ServiceEntity(this?.id?.orZero() ?? ZERO,
+        this?.title?.orEmpty() ?? EMPTY, this?.image?.orEmpty() ?? EMPTY);
   }
 }
 
 extension StoreResponseMapper on StoreResponse? {
-  Store toDomain() {
-    return Store(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
-        this?.image?.orEmpty() ?? EMPTY);
+  StoreEntity toDomain() {
+    return StoreEntity(this?.id?.orZero() ?? ZERO,
+        this?.title?.orEmpty() ?? EMPTY, this?.image?.orEmpty() ?? EMPTY);
   }
 }
 
 extension BannerResponseMapper on BannerResponse? {
-  BannerAd toDomain() {
-    return BannerAd(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
-        this?.image?.orEmpty() ?? EMPTY, this?.link?.orEmpty() ?? EMPTY);
+  BannerAdEntity toDomain() {
+    return BannerAdEntity(
+        this?.id?.orZero() ?? ZERO,
+        this?.title?.orEmpty() ?? EMPTY,
+        this?.image?.orEmpty() ?? EMPTY,
+        this?.link?.orEmpty() ?? EMPTY);
   }
 }
 
 extension HomeResponseMapper on HomeResponse? {
-  HomeObject toDomain() {
-    final List<Service> mappedServices =
+  HomeObjectEntity toDomain() {
+    final List<ServiceEntity> mappedServices =
         (this?.data?.services?.map((service) => service.toDomain()) ??
                 const Iterable.empty())
-            .cast<Service>()
+            .cast<ServiceEntity>()
             .toList();
 
-    final List<Store> mappedStores =
+    final List<StoreEntity> mappedStores =
         (this?.data?.stores?.map((store) => store.toDomain()) ??
                 const Iterable.empty())
-            .cast<Store>()
+            .cast<StoreEntity>()
             .toList();
 
-    final List<BannerAd> mappedBanners =
+    final List<BannerAdEntity> mappedBanners =
         (this?.data?.banners?.map((bannerAd) => bannerAd.toDomain()) ??
                 const Iterable.empty())
-            .cast<BannerAd>()
+            .cast<BannerAdEntity>()
             .toList();
 
-    final data = HomeData(mappedServices, mappedStores, mappedBanners);
-    return HomeObject(data);
+    final data = HomeDataEntity(mappedServices, mappedStores, mappedBanners);
+    return HomeObjectEntity(data);
   }
 }
 
 extension StoreDetailsResponseMapper on StoreDetailsResponse? {
-  StoreDetails toDomain() {
-    return StoreDetails(
+  StoreDetailsEntity toDomain() {
+    return StoreDetailsEntity(
         this?.id?.orZero() ?? ZERO,
         this?.title?.orEmpty() ?? EMPTY,
         this?.image?.orEmpty() ?? EMPTY,

@@ -1,15 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/di.dart';
-import '../forgot_password/forgot_password.dart';
-import '../login/login.dart';
-import '../main/main_view.dart';
-import '../onboarding/onboarding.dart';
-import '../register/register.dart';
-import '../splash/splash.dart';
-import '../store_details/store_details.dart';
+import '../../../app/di.dart';
+import '../../../presentation/forgot_password/forgot_password.dart';
+import '../../../presentation/login/login.dart';
+import '../../../presentation/main/main_view.dart';
+import '../../../presentation/onboarding/onboarding.dart';
+import '../../../presentation/register/register.dart';
+import '../../../presentation/splash/splash.dart';
+import '../../../presentation/store_details/store_details.dart';
 import 'strings_manager.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+final NavigatorState navigatorState = navigatorKey.currentState!;
 
 class Routes {
   static const String splashRoute = '/';

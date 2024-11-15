@@ -2,13 +2,15 @@ import 'package:dartz/dartz.dart';
 
 import '../../data/network/failure.dart';
 import '../../data/request/request.dart';
-import '../model/model.dart';
+import '../entity/model.dart';
+import '../entity/store_details_entity.dart';
 
 abstract class Repository {
-  Future<Either<Failure, Authentication>> login(LoginRequest loginRequest);
+  Future<Either<Failure, AuthenticationEntity>> login(
+      LoginRequest loginRequest);
   Future<Either<Failure, String>> forgotPassword(String email);
-  Future<Either<Failure, Authentication>> register(
+  Future<Either<Failure, AuthenticationEntity>> register(
       RegisterRequest registerRequest);
-  Future<Either<Failure, HomeObject>> getHome();
-  Future<Either<Failure, StoreDetails>> getStoreDetails();
+  Future<Either<Failure, HomeObjectEntity>> getHome();
+  Future<Either<Failure, StoreDetailsEntity>> getStoreDetails();
 }

@@ -3,12 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/di.dart';
-import '../../../domain/model/model.dart';
+import '../../../domain/entity/model.dart';
+import '../../../shared/util/resources/color_manager.dart';
+import '../../../shared/util/resources/routes_manager.dart';
+import '../../../shared/util/resources/strings_manager.dart';
+import '../../../shared/util/resources/values_manager.dart';
 import '../../common/state_renderer/state_render_impl.dart';
-import '../../resources/color_manager.dart';
-import '../../resources/routes_manager.dart';
-import '../../resources/strings_manager.dart';
-import '../../resources/values_manager.dart';
 import 'home_viewmodel.dart';
 
 class HomePage extends StatefulWidget {
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _getBanner(List<BannerAd>? banners) {
+  Widget _getBanner(List<BannerAdEntity>? banners) {
     if (banners != null) {
       return CarouselSlider(
           items: banners
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Widget _getServicesWidget(List<Service>? services) {
+  Widget _getServicesWidget(List<ServiceEntity>? services) {
     if (services != null) {
       return Padding(
         padding:
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Widget _getStoresWidget(List<Store>? stores) {
+  Widget _getStoresWidget(List<StoreEntity>? stores) {
     if (stores != null) {
       return Padding(
         padding: const EdgeInsets.only(

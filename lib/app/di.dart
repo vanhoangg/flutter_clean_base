@@ -19,44 +19,44 @@ import '../presentation/forgot_password/forgot_password_viewmodel.dart';
 import '../presentation/login/login_viewmodel.dart';
 import '../presentation/main/home/home_viewmodel.dart';
 import '../presentation/register/register_viewmodel.dart';
-import '../presentation/store_details/store_details_viewmodel.dart';
+import '../presentation/store_details/bloc/store_details_bloc.dart';
+
 import 'app_prefs.dart';
 
 final instance = GetIt.instance;
 
 Future<void> initAppModule() async {
-  final sharedPrefs = await SharedPreferences.getInstance();
-
   // shared prefs instance
-  instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
-
-  // app prefs instance
-  instance
-      .registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
+  final sharedPrefs = await SharedPreferences.getInstance();
 
   // network info
   final connectivityResult = await Connectivity().checkConnectivity();
-  instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(connectivityResult));
-
-  // dio factory
-  instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
 
   // app  service client
   final dio = await instance<DioFactory>().getDio();
-  instance.registerLazySingleton<AppServiceClient>(() => AppServiceClient(dio));
 
-  // remote data source
-  instance.registerLazySingleton<RemoteDataSource>(
-      () => RemoteDataSourceImplementer(instance()));
+  instance
+    ..registerLazySingleton<SharedPreferences>(() => sharedPrefs)
 
-  // local data source
-  instance.registerLazySingleton<LocalDataSource>(
-      () => LocalDataSourceImplementer());
+    // app prefs instance
+    ..registerLazySingleton<AppPreferences>(() => AppPreferences(instance()))
+    ..registerLazySingleton<NetworkInfo>(
+        () => NetworkInfoImpl(connectivityResult))
 
-  // repository
-  instance.registerLazySingleton<Repository>(
-      () => RepositoryImpl(instance(), instance(), instance()));
+    // dio factory
+    ..registerLazySingleton<DioFactory>(() => DioFactory(instance()))
+    ..registerLazySingleton<AppServiceClient>(() => AppServiceClient(dio))
+
+    // remote data source
+    ..registerLazySingleton<RemoteDataSource>(
+        () => RemoteDataSourceImplementer(instance()))
+
+    // local data source
+    ..registerLazySingleton<LocalDataSource>(() => LocalDataSourceImplementer())
+
+    // repository
+    ..registerLazySingleton<Repository>(
+        () => RepositoryImpl(instance(), instance(), instance()));
 }
 
 void initLoginModule() {
@@ -87,17 +87,18 @@ void initRegisterModule() {
 
 void initHomeModule() {
   if (!GetIt.I.isRegistered<HomeUseCase>()) {
-    instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
-    instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
+    instance
+      ..registerFactory<HomeUseCase>(() => HomeUseCase(instance()))
+      ..registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
   }
 }
 
 void initStoreDetailsModule() {
   if (!GetIt.I.isRegistered<StoreDetailsUseCase>()) {
-    instance.registerFactory<StoreDetailsUseCase>(
-        () => StoreDetailsUseCase(instance()));
-    instance.registerFactory<StoreDetailsViewModel>(
-        () => StoreDetailsViewModel(instance()));
+    instance
+      ..registerFactory<StoreDetailsUseCase>(
+          () => StoreDetailsUseCase(instance()))
+      ..registerFactory<StoreDetailsBloc>(() => StoreDetailsBloc(instance()));
   }
 }
 

@@ -11,11 +11,11 @@ import '../../app/app_prefs.dart';
 import '../../app/di.dart';
 import '../../data/mapper/mapper.dart';
 import '../common/state_renderer/state_render_impl.dart';
-import '../resources/assets_manager.dart';
-import '../resources/color_manager.dart';
-import '../resources/routes_manager.dart';
-import '../resources/strings_manager.dart';
-import '../resources/values_manager.dart';
+import '../../shared/util/resources/assets_manager.dart';
+import '../../shared/util/resources/color_manager.dart';
+import '../../shared/util/resources/routes_manager.dart';
+import '../../shared/util/resources/strings_manager.dart';
+import '../../shared/util/resources/values_manager.dart';
 import 'register_viewmodel.dart';
 
 class RegisterView extends StatefulWidget {

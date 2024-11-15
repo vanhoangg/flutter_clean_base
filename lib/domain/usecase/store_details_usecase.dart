@@ -1,17 +1,24 @@
 import 'package:dartz/dartz.dart';
 
 import '../../data/network/failure.dart';
-import '../model/model.dart';
+
+import '../entity/store_details_entity.dart';
 import '../repository/repository.dart';
 import 'base_usecase.dart';
 
-class StoreDetailsUseCase extends BaseUseCase<void, StoreDetails> {
+class StoreDetailsUseCase
+    extends BaseUseCase<StoreDetailsUseCaseInput, StoreDetailsEntity> {
   Repository repository;
 
   StoreDetailsUseCase(this.repository);
 
   @override
-  Future<Either<Failure, StoreDetails>> execute(void input) {
+  Future<Either<Failure, StoreDetailsEntity>> execute(
+      StoreDetailsUseCaseInput input) {
     return repository.getStoreDetails();
   }
+}
+
+class StoreDetailsUseCaseInput {
+  const StoreDetailsUseCaseInput();
 }

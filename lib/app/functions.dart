@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/services.dart';
 
-import '../domain/model/model.dart';
+import '../domain/entity/model.dart';
 
-Future<DeviceInfo> getDeviceDetails() async {
+Future<DeviceInfoEntity> getDeviceDetails() async {
   String name = 'Unknown';
   String identifier = 'Unknown';
   String version = 'Unknown';
@@ -28,9 +28,9 @@ Future<DeviceInfo> getDeviceDetails() async {
     }
   } on PlatformException {
     // return default data here
-    return DeviceInfo(name, identifier, version);
+    return DeviceInfoEntity(name, identifier, version);
   }
-  return DeviceInfo(name, identifier, version);
+  return DeviceInfoEntity(name, identifier, version);
 }
 
 bool isEmailValid(String email) {

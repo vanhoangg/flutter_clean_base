@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../presentation/resources/language_manager.dart';
+import '../shared/util/resources/language_manager.dart';
 
 const String PREFS_KEY_LANG = 'PREFS_KEY_LANG';
 const String PREFS_KEY_ONBOARDING_SCREEN = 'PREFS_KEY_ONBOARDING_SCREEN';

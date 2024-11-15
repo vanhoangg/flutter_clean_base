@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../resources/color_manager.dart';
-import '../resources/strings_manager.dart';
-import '../resources/values_manager.dart';
+import '../../shared/util/resources/color_manager.dart';
+import '../../shared/util/resources/strings_manager.dart';
+import '../../shared/util/resources/values_manager.dart';
 import 'home/home_page.dart';
 import 'notifications_page.dart';
 import 'search_page.dart';
