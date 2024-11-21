@@ -40,7 +40,7 @@ class AppPreferences {
     final String currentLanguage = await getAppLanguage();
     if (currentLanguage == LanguageType.VIETNAMESE.getValue()) {
       // return arabic local
-      return ARABIC_LOCAL;
+      return VIETNAMESE_LOCAL;
     } else {
       // return english local
       return ENGLISH_LOCAL;

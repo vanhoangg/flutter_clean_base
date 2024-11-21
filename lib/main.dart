@@ -11,7 +11,7 @@ FutureOr<void> main() async {
   await EasyLocalization.ensureInitialized();
   await initAppModule();
   runApp(EasyLocalization(
-    supportedLocales: [ENGLISH_LOCAL, ARABIC_LOCAL],
+    supportedLocales: [ENGLISH_LOCAL, VIETNAMESE_LOCAL],
     path: ASSETS_PATH_LOCALISATIONS,
     child: Phoenix(child: MyApp()),
   ));

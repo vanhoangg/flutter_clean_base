@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/mapper/mapper.dart';
+import '../../../app/extensions.dart';
 import '../../../shared/util/resources/strings_manager.dart';
 import 'state_renderer.dart';
 

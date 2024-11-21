@@ -1,6 +1,7 @@
 // extension on String
 
-import '../data/mapper/mapper.dart';
+const EMPTY = '';
+const ZERO = 0;
 
 extension NonNullString on String? {
   String orEmpty() {

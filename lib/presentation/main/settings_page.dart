@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../app/app_prefs.dart';
 import '../../app/di.dart';
-import '../../data/data_source/local_data_source.dart';
+import '../../data/data_source/local/local_data_source.dart';
 import '../../shared/util/resources/assets_manager.dart';
 import '../../shared/util/resources/language_manager.dart';
 import '../../shared/util/resources/routes_manager.dart';
@@ -95,7 +95,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   bool isRtl() {
-    return context.locale == ARABIC_LOCAL; // app is in arabic language
+    return context.locale == VIETNAMESE_LOCAL; // app is in arabic language
   }
 
   void _changeLanguage() {

@@ -38,7 +38,7 @@ linter:
     - avoid_init_to_null
     - avoid_multiple_declarations_per_line
     - avoid_null_checks_in_equality_operators
-    - avoid_print
+    # - avoid_print
     #    - avoid_redundant_argument_values
     - avoid_return_types_on_setters
     - avoid_shadowing_type_parameters
@@ -51,7 +51,7 @@ linter:
     - await_only_futures
     - cancel_subscriptions
     - curly_braces_in_flow_control_structures
-    - directives_ordering
+    # - directives_ordering
     - empty_constructor_bodies
     - exhaustive_cases
     - file_names
@@ -86,7 +86,7 @@ linter:
     - sized_box_for_whitespace
     - slash_for_doc_comments
     - sort_child_properties_last
-    - sort_pub_dependencies
+    # - sort_pub_dependencies
     - throw_in_finally
     - type_init_formals
     - unawaited_futures

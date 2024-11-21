@@ -4,12 +4,12 @@ import 'package:flutter/scheduler.dart';
 
 import '../../app/app_prefs.dart';
 import '../../app/di.dart';
-import '../common/state_renderer/state_render_impl.dart';
 import '../../shared/util/resources/assets_manager.dart';
 import '../../shared/util/resources/color_manager.dart';
-import '../../shared/util/resources/routes_manager.dart';
+
 import '../../shared/util/resources/strings_manager.dart';
 import '../../shared/util/resources/values_manager.dart';
+import '../common/state_renderer/state_render_impl.dart';
 import 'login_viewmodel.dart';
 
 class LoginView extends StatefulWidget {
@@ -41,7 +41,8 @@ class _LoginViewState extends State<LoginView> {
         _appPreferences.setUserToken(token);
         _appPreferences.setIsUserLoggedIn();
         resetModules();
-        Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+        // TODO(Hoang): Navigate to main route
+        // Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
       });
     });
   }
@@ -138,35 +139,35 @@ class _LoginViewState extends State<LoginView> {
                         );
                       },
                     )),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: AppPadding.p8,
-                    left: AppPadding.p28,
-                    right: AppPadding.p28,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, Routes.forgotPasswordRoute);
-                        },
-                        child: Text(AppStrings.forgetPassword,
-                                style: Theme.of(context).textTheme.titleSmall)
-                            .tr(),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, Routes.registerRoute);
-                        },
-                        child: Text(AppStrings.registerText,
-                                style: Theme.of(context).textTheme.titleSmall)
-                            .tr(),
-                      )
-                    ],
-                  ),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     top: AppPadding.p8,
+                //     left: AppPadding.p28,
+                //     right: AppPadding.p28,
+                //   ),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       TextButton(
+                //         onPressed: () {
+                //           Navigator.pushNamed(
+                //               context, Routes.forgotPasswordRoute);
+                //         },
+                //         child: Text(AppStrings.forgetPassword,
+                //                 style: Theme.of(context).textTheme.titleSmall)
+                //             .tr(),
+                //       ),
+                //       TextButton(
+                //         onPressed: () {
+                //           Navigator.pushNamed(context, Routes.registerRoute);
+                //         },
+                //         child: Text(AppStrings.registerText,
+                //                 style: Theme.of(context).textTheme.titleSmall)
+                //             .tr(),
+                //       )
+                //     ],
+                //   ),
+                // )
               ],
             ),
           ),

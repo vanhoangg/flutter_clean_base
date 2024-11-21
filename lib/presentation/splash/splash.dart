@@ -24,30 +24,26 @@ class _SplashViewState extends State<SplashView> {
   }
 
   Future<void> _goNext() async {
-    _appPreferences.isUserLoggedIn().then((isUserLoggedIn) => {
-          if (isUserLoggedIn)
-            {
-              // navigate to main screen
-              Navigator.pushReplacementNamed(context, Routes.mainRoute)
-            }
-          else
-            {
-              _appPreferences
-                  .isOnBoardingScreenViewed()
-                  .then((isOnBoardingScreenViewed) => {
-                        if (isOnBoardingScreenViewed)
-                          {
-                            Navigator.pushReplacementNamed(
-                                context, Routes.loginRoute)
-                          }
-                        else
-                          {
-                            Navigator.pushReplacementNamed(
-                                context, Routes.onBoardingRoute)
-                          }
-                      })
-            }
-        });
+    // Debug
+    await Navigator.pushReplacementNamed(context, Routes.loginRoute);
+    return;
+
+    // Release
+    final bool isUserLoggedIn = await _appPreferences.isUserLoggedIn();
+    if (isUserLoggedIn) {
+      // navigate to main screen
+      // Navigator.pushReplacementNamed(context, Routes.mainRoute);
+      await Navigator.pushReplacementNamed(context, Routes.loginRoute);
+      return;
+    }
+
+    if (await _appPreferences.isOnBoardingScreenViewed()) {
+      await Navigator.pushReplacementNamed(context, Routes.loginRoute);
+      return;
+    }
+    await Navigator.pushReplacementNamed(context, Routes.loginRoute);
+    // Push onboard
+    // Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
   }
 
   @override

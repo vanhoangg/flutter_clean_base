@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../data/mapper/mapper.dart';
+import '../../../app/extensions.dart';
 import '../../../shared/util/resources/assets_manager.dart';
 import '../../../shared/util/resources/color_manager.dart';
 import '../../../shared/util/resources/font_manager.dart';
