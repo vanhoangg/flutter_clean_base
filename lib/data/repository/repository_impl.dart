@@ -1,7 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/scheduler.dart';
 
+import '../../app/app_prefs.dart';
+import '../../app/di.dart';
+import '../../app/extensions.dart';
 import '../../domain/entity/entity.dart';
 import '../../domain/repository/repository.dart';
+import '../../shared/shared.dart';
+
 import '../data_source/authentication/auth_data_source.dart';
 import '../data_source/local/local_data_source.dart';
 
@@ -15,6 +21,7 @@ class RepositoryImpl extends Repository {
   final AuthDataSource _remoteDataSource;
   final LocalDataSource _localDataSource;
   final NetworkInfo _networkInfo;
+  final _appPreferences = instance<AppPreferences>();
 
   RepositoryImpl(
       this._remoteDataSource, this._localDataSource, this._networkInfo);
@@ -25,6 +32,17 @@ class RepositoryImpl extends Repository {
       try {
         // its safe to call the API
         final response = await _remoteDataSource.login(loginRequest);
+        if (response.accessToken != null) {
+          SchedulerBinding.instance.addPostFrameCallback((_) {
+            _appPreferences
+                .setUserToken(response.accessToken?.orEmpty() ?? EMPTY);
+            _appPreferences.setIsUserLoggedIn();
+            resetModules();
+            Log.d('LoginSuccess');
+            // Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+          });
+        }
+
         return Right(response.toDomain());
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);

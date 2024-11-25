@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../app/functions.dart';
 import '../../data/network/failure.dart';
 import '../../data/model/request/login_request.dart';
 import '../entity/entity.dart';
@@ -15,7 +14,8 @@ class LoginUseCase implements BaseUseCase<LoginUseCaseInput, UserEntity> {
 
   @override
   Future<Either<Failure, UserEntity>> execute(LoginUseCaseInput input) async {
-    final DeviceInfo deviceInfo = await getDeviceDetails();
+    // final DeviceInfo deviceInfo = await getDeviceDetails();
+
     return await _repository.login(LoginRequest(
       input.username,
       input.password,

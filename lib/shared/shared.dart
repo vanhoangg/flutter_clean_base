@@ -1,4 +1,3 @@
-export 'config/data_result.dart';
 export 'config/definition/definition.dart';
 export 'config/definition/enums.dart';
 export 'config/definition/event_emitter_key.dart';
@@ -35,7 +34,6 @@ export 'exception/uncaught/app_uncaught_exception.dart';
 export 'exception/validation/validation_exception.dart';
 export 'helper/app_info.dart';
 export 'helper/helper.dart';
-export 'helper/run_catching/run_catching.dart';
 export 'helper/stream/disposable.dart';
 export 'helper/stream/dispose_bag.dart';
 export 'helper/stream/stream.dart';

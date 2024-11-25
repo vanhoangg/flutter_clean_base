@@ -25,7 +25,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void didChangeDependencies() {
     _appPreferences.getLocal().then((local) => {context.setLocale(local)});
-
     super.didChangeDependencies();
   }
 

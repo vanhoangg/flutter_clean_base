@@ -1,3 +1,5 @@
+enum BlocStatus { inital, loading, success, failed }
+
 class Constant {
   //#region Authentication
   static const String baseUrl = 'https://dummyjson.com/';
