@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
 
 import '../../app/di.dart';
-import '../../shared/shared.dart';
+import 'package:shared/shared.dart';
+
+import '../../app/widget_util.dart';
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   Route get route => instance();

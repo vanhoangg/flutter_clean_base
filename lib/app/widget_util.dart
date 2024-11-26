@@ -1,18 +1,10 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared/shared.dart';
 
 import 'package:overlay_support/overlay_support.dart';
 
-import '../shared/util/resources/assets_manager.dart';
-import '../shared/util/resources/color_manager.dart';
-import '../shared/util/resources/font_manager.dart';
-import '../shared/util/resources/strings_manager.dart';
-import '../shared/util/resources/styles_manager.dart';
-import '../shared/util/resources/values_manager.dart';
-import 'extensions.dart';
 import 'routes_manager.dart';
 
 OverlaySupportEntry? _loadingOverlayEntry;

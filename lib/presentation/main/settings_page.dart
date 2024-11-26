@@ -1,18 +1,14 @@
 import 'dart:math' as math;
 
+import 'package:data/data.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../app/app_prefs.dart';
 import '../../app/di.dart';
-import '../../data/data_source/local/local_data_source.dart';
-import '../../shared/util/resources/assets_manager.dart';
-import '../../shared/util/resources/language_manager.dart';
-import '../../shared/util/resources/routes_manager.dart';
-import '../../shared/util/resources/strings_manager.dart';
-import '../../shared/util/resources/values_manager.dart';
+import '../../app/routes_manager.dart';
+import 'package:shared/shared.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

@@ -1,12 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:domain/domain.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../../app/constant.dart';
-import '../../../app/extensions.dart';
-import '../../../domain/entity/entity.dart';
-import '../../../domain/usecase/login_usecase.dart';
+import 'package:shared/shared.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

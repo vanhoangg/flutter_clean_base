@@ -1,0 +1,1 @@
+melos run build_all

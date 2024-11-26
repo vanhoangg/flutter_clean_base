@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:shared/shared.dart';
 
 import '../../../app/di.dart';
 
@@ -7,7 +8,7 @@ import '../../../presentation/login/login_screen.dart';
 
 import '../../../presentation/main/main_screen.dart';
 import '../../../presentation/splash/splash.dart';
-import '../shared/util/resources/strings_manager.dart';
+
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final NavigatorState navigatorState = navigatorKey.currentState!;

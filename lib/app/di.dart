@@ -1,19 +1,12 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:data/data.dart';
+import 'package:domain/domain.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../data/data_source/authentication/auth_data_source.dart';
-import '../data/data_source/local/local_data_source.dart';
-import '../data/network/authentication/auth_api_service.dart';
-import '../data/network/dio_factory.dart';
-import '../data/network/network_info.dart';
-import '../data/repository/repository_impl.dart';
-import '../domain/repository/repository.dart';
-import '../domain/usecase/login_usecase.dart';
 import '../presentation/login/bloc/login_bloc.dart';
 
-import '../shared/util/widget/widget_util.dart';
-import 'app_prefs.dart';
+import 'widget_util.dart';
 
 final instance = GetIt.instance;
 
