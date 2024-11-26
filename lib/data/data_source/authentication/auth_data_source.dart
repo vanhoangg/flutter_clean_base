@@ -1,4 +1,4 @@
-import '../../model/responses/authentication/user_model.dart';
+import '../../model/responses/user/user_model.dart';
 import '../../network/authentication/auth_api_service.dart';
 import '../../model/request/login_request.dart';
 

@@ -1,4 +1,4 @@
-import 'authentication.dart';
+import 'coordinates_model.dart';
 
 class AddressModel {
   final String? address;

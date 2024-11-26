@@ -9,7 +9,6 @@ import '../../domain/repository/repository.dart';
 import '../data_source/authentication/auth_data_source.dart';
 import '../data_source/local/local_data_source.dart';
 
-import '../mapper/authentication/authentication_mapper.dart';
 import '../model/request/login_request.dart';
 import '../network/error_handler.dart';
 import '../network/failure.dart';

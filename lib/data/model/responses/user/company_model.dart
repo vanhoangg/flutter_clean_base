@@ -1,4 +1,4 @@
-import 'authentication.dart';
+import 'address_model.dart';
 
 class CompanyModel {
   final String? department;

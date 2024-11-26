@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../app/constant.dart';
-import '../../model/responses/authentication/user_model.dart';
+import '../../model/responses/user/user_model.dart';
 
 part 'auth_api_service.g.dart';
 
@@ -17,47 +17,52 @@ abstract class AuthServiceClient {
   @GET(Constant.userPath)
   Future<List<UserModel>> getListUser();
 
-  @GET('${Constant.userPath}/search')
+  @GET(Constant.searchUserPath)
   Future<List<UserModel>> getSearchListUser(
-    @Query('q') String q,
+    @Query(Constant.searchParams) String q,
   );
-  @GET('${Constant.userPath}/filter')
+  @GET(Constant.filterUserPath)
   Future<List<UserModel>> getFilterListUser(
-    @Query('key') String key,
-    @Query('value') String value,
+    @Query(Constant.keyParams) String key,
+    @Query(Constant.valueParams) String value,
   );
 
-  @GET('${Constant.userPath}/{userId}')
+  @GET(Constant.userDetailPath)
   Future<UserModel> getUserProfile(
-    @Path('userId') String userId,
+    @Path(Constant.userIdParams) String userId,
   );
 
-  @PUT('${Constant.userPath}/{userId}')
+  @PUT(Constant.userDetailPath)
   Future<UserModel> putUpdateUserProfile(
-    @Path('userId') String userId,
+    @Path(Constant.userIdParams) String userId,
     @Body() Map<String, dynamic> body,
   );
 
-  @DELETE('${Constant.userPath}/{userId}')
+  @DELETE(Constant.userDetailPath)
   Future<bool> deleteUserProfile(
-    @Path('userId') String userId,
+    @Path(Constant.userIdParams) String userId,
   );
 
-  @GET('${Constant.userPath}/{userId}/carts')
+  @GET(Constant.userListCartsPath)
   Future<UserModel> getUserCarts(
-    @Path('userId') String userId,
+    @Path(Constant.userIdParams) String userId,
   );
-  @GET('${Constant.userPath}/{userId}/todos')
+  @GET(Constant.userListTodosPath)
   Future<UserModel> getUserTodos(
-    @Path('userId') String userId,
+    @Path(Constant.userIdParams) String userId,
   );
-  @PUT('${Constant.authPath}/${Constant.todos}/{todoId}')
+
+  @GET(Constant.userListPostsPath)
+  Future<UserModel> getUserPosts(
+    @Path(Constant.userIdParams) String userId,
+  );
+  @PUT(Constant.todoDetailPath)
   Future<bool> putCompleteTodoTask(
-    @Path('todoId') String todoId,
+    @Path(Constant.todoIdParams) String todoId,
     @Body() bool completed,
   );
-  @DELETE('${Constant.authPath}/${Constant.todos}/{todoId}')
+  @DELETE(Constant.todoDetailPath)
   Future<bool> deleteTodoTask(
-    @Path('todoId') String todoId,
+    @Path(Constant.todoIdParams) String todoId,
   );
 }

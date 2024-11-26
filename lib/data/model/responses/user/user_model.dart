@@ -4,7 +4,11 @@
 
 import 'dart:convert';
 
-import 'authentication.dart';
+import 'address_model.dart';
+import 'bank_model.dart';
+import 'company_model.dart';
+import 'crypto_model.dart';
+import 'hair_model.dart';
 
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 

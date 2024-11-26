@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../data/network/failure.dart';
 import '../../data/model/request/login_request.dart';
+import '../../data/network/failure.dart';
 import '../entity/entity.dart';
-
 import '../repository/repository.dart';
 import 'base_usecase.dart';
 

@@ -1,7 +1,13 @@
 import '../../../app/extensions.dart';
 
 import '../../../domain/entity/entity.dart';
-import '../../model/responses/authentication/authentication.dart';
+import '../../model/responses/user/address_model.dart';
+import '../../model/responses/user/bank_model.dart';
+import '../../model/responses/user/company_model.dart';
+import '../../model/responses/user/coordinates_model.dart';
+import '../../model/responses/user/crypto_model.dart';
+import '../../model/responses/user/hair_model.dart';
+import '../../model/responses/user/user_model.dart';
 
 extension UserModelMapper on UserModel? {
   UserEntity toDomain() => UserEntity(

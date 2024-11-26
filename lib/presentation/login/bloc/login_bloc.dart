@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import '../../../app/constant.dart';
 import '../../../app/extensions.dart';
 import '../../../domain/entity/entity.dart';
