@@ -25,15 +25,16 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> _goNext() async {
     // Debug
-    await Navigator.pushReplacementNamed(context, Routes.loginRoute);
-    return;
+    // if (kDebugMode) {
+    //   await Navigator.pushReplacementNamed(context, Routes.loginRoute);
+    //   return;
+    // }
 
     // Release
     final bool isUserLoggedIn = await _appPreferences.isUserLoggedIn();
     if (isUserLoggedIn) {
       // navigate to main screen
-      // Navigator.pushReplacementNamed(context, Routes.mainRoute);
-      await Navigator.pushReplacementNamed(context, Routes.loginRoute);
+      await Navigator.pushReplacementNamed(context, Routes.mainRoute);
       return;
     }
 

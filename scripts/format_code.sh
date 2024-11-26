@@ -1,1 +1,3 @@
-fvm flutter format ./ -l 80
+dart format ./ -l 80
+dart fix --dry-run
+dart fix --apply

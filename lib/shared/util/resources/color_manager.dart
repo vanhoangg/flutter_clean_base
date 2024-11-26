@@ -13,7 +13,7 @@ class ColorManager {
   static Color grey2 = HexColor.fromHex('#797979');
   static Color white = HexColor.fromHex('#FFFFFF');
   static Color error = HexColor.fromHex('#e61f34');
-  static Color black= HexColor.fromHex('#000000'); // red color
+  static Color black = HexColor.fromHex('#000000'); // red color
 }
 
 extension HexColor on Color {

@@ -1,7 +1,7 @@
 import '../../../app/extensions.dart';
 
 import '../../../domain/entity/entity.dart';
-import '../../model/responses/authentication/user_model.dart';
+import '../../model/responses/authentication/authentication.dart';
 
 extension UserModelMapper on UserModel? {
   UserEntity toDomain() => UserEntity(

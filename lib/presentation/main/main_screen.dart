@@ -5,19 +5,22 @@ import '../../shared/util/resources/color_manager.dart';
 import '../../shared/util/resources/strings_manager.dart';
 import '../../shared/util/resources/values_manager.dart';
 
+import '../base/base_state.dart';
+import '../home/home_screen.dart';
 import 'notifications_page.dart';
 import 'search_page.dart';
 import 'settings_page.dart';
 
-class MainView extends StatefulWidget {
-  const MainView({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  _MainViewState createState() => _MainViewState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainViewState extends State<MainView> {
+class _MainScreenState extends BaseState<MainScreen> {
   List<Widget> pages = [
+    const HomeScreen(),
     const SearchPage(),
     const NotificationsPage(),
     const SettingsPage()
@@ -34,12 +37,6 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          _title,
-          style: Theme.of(context).textTheme.displayMedium,
-        ),
-      ),
       body: pages[_currentIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(boxShadow: [

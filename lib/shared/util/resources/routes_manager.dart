@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../../app/di.dart';
 
-import '../../../presentation/login/login.dart';
+import '../../../presentation/login/login_screen.dart';
 
+import '../../../presentation/main/main_screen.dart';
 import '../../../presentation/splash/splash.dart';
 
 import 'strings_manager.dart';
@@ -15,6 +16,7 @@ final NavigatorState navigatorState = navigatorKey.currentState!;
 class Routes {
   static const String splashRoute = '/';
   static const String loginRoute = '/login';
+  static const String mainRoute = '/main';
 }
 
 class RouteGenerator {
@@ -24,7 +26,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.loginRoute:
         initLoginModule();
-        return MaterialPageRoute(builder: (_) => const LoginView());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case Routes.mainRoute:
+        return MaterialPageRoute(builder: (_) => const MainScreen());
 
       default:
         return unDefinedRoute();

@@ -1,12 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../../app/app_prefs.dart';
 import '../../app/di.dart';
 import '../../app/extensions.dart';
 import '../../domain/entity/entity.dart';
 import '../../domain/repository/repository.dart';
-import '../../shared/shared.dart';
 
 import '../data_source/authentication/auth_data_source.dart';
 import '../data_source/local/local_data_source.dart';
@@ -33,14 +31,12 @@ class RepositoryImpl extends Repository {
         // its safe to call the API
         final response = await _remoteDataSource.login(loginRequest);
         if (response.accessToken != null) {
-          SchedulerBinding.instance.addPostFrameCallback((_) {
+          await Future.wait([
             _appPreferences
-                .setUserToken(response.accessToken?.orEmpty() ?? EMPTY);
-            _appPreferences.setIsUserLoggedIn();
-            resetModules();
-            Log.d('LoginSuccess');
-            // Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
-          });
+                .setUserToken(response.accessToken?.orEmpty() ?? EMPTY),
+            _appPreferences.setIsUserLoggedIn(),
+            resetModules(),
+          ]);
         }
 
         return Right(response.toDomain());

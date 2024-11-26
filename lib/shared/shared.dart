@@ -4,7 +4,6 @@ export 'config/definition/event_emitter_key.dart';
 export 'config/definition/strings.dart';
 export 'config/definition/type_alias.dart';
 export 'config/log_config.dart';
-export 'config/route.dart';
 export 'constant/duration_constants.dart';
 
 export 'constant/format/date_time_format_constants.dart';

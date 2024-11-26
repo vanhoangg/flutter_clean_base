@@ -14,14 +14,14 @@ TextStyle _getTextStyle(
 // regular style
 
 TextStyle getRegularStyle(
-    {required Color color, double fontSize = FontSize.s12}) {
+    {required Color color, double fontSize = FontSize.defaultAppSize}) {
   return _getTextStyle(
       fontSize, FontConstants.fontFamily, FontWeightManager.regular, color);
 }
 // light text style
 
 TextStyle getLightStyle(
-    {required Color color, double fontSize = FontSize.s12}) {
+    {required Color color, double fontSize = FontSize.defaultAppSize}) {
   return _getTextStyle(
       fontSize, FontConstants.fontFamily, FontWeightManager.light, color);
 }
@@ -35,7 +35,7 @@ TextStyle getBoldStyle({required Color color, double fontSize = FontSize.s12}) {
 // semi bold text style
 
 TextStyle getSemiBoldStyle(
-    {required Color color, double fontSize = FontSize.s12}) {
+    {required Color color, double fontSize = FontSize.defaultAppSize}) {
   return _getTextStyle(
       fontSize, FontConstants.fontFamily, FontWeightManager.semiBold, color);
 }
@@ -43,7 +43,7 @@ TextStyle getSemiBoldStyle(
 // medium text style
 
 TextStyle getMediumStyle(
-    {required Color color, double fontSize = FontSize.s12}) {
+    {required Color color, double fontSize = FontSize.defaultAppSize}) {
   return _getTextStyle(
       fontSize, FontConstants.fontFamily, FontWeightManager.medium, color);
 }

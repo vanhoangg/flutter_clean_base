@@ -62,8 +62,8 @@ void initLoginModule() {
   }
 }
 
-void resetModules() {
-  instance.reset(dispose: false);
-  initAppModule();
+Future<void> resetModules() async {
+  await instance.reset(dispose: false);
+  await initAppModule();
   initLoginModule();
 }

@@ -9,14 +9,14 @@ import '../../shared/shared.dart';
 import '../base/base_state.dart';
 import 'bloc/login_bloc.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginViewState extends BaseState<LoginView> {
+class _LoginScreenState extends BaseState<LoginScreen> {
   final LoginBloc _bloc = instance<LoginBloc>();
 
   final TextEditingController _userNameController = TextEditingController();
@@ -28,6 +28,10 @@ class _LoginViewState extends BaseState<LoginView> {
         () => _bloc.add(ChangeUserNameEvent(_userNameController.text)));
     _passwordController.addListener(
         () => _bloc.add(ChangePasswordEvent(_passwordController.text)));
+    if (Constant.developerMode) {
+      _userNameController.text = 'emilys';
+      _passwordController.text = 'emilyspass';
+    }
   }
 
   @override
@@ -48,7 +52,10 @@ class _LoginViewState extends BaseState<LoginView> {
               widgetUtil.showPopUp(context: context);
               return;
             case BlocStatus.success:
+              widgetUtil.dismissDialog(context);
+
               // TODO(Hoang): Navigate to home screen
+              _navigatorToHomeScreen();
               return;
             case BlocStatus.failed:
               widgetUtil.showPopUp(
@@ -130,5 +137,9 @@ class _LoginViewState extends BaseState<LoginView> {
   void dispose() {
     _bloc.close();
     super.dispose();
+  }
+
+  void _navigatorToHomeScreen() {
+    Navigator.pushReplacementNamed(context, Routes.mainRoute);
   }
 }
