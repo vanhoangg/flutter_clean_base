@@ -868,14 +868,14 @@ Install `flutter_clean_base` using one of the following methods:
 3. Install the project dependencies:
 
 
-**Install `melos`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Dart-0175C2.svg?style={badge_style}&logo=dart&logoColor=white" />](https://dart.dev/)
+- **Install `melos`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Dart-0175C2.svg?style={badge_style}&logo=dart&logoColor=white" />](https://dart.dev/)
 
 ```sh
 ❯ dart pub global activate melos 
 ```
 
 
-**Install `dependence packages` instead `flutter pub get`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Dart-0175C2.svg?style={badge_style}&logo=dart&logoColor=white" />]()
+- **Install `dependence packages` instead `flutter pub get`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Dart-0175C2.svg?style={badge_style}&logo=dart&logoColor=white" />]()
 
 ```sh
 ❯ melos bootstrap
