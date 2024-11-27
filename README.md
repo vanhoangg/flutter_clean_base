@@ -38,15 +38,15 @@
 ---
 
 ## 👾 Features
-**Architecture:** Clean Architecture
-**State management:** flutter_bloc
-**DI:** get_it, injectable
-**REST API:** dio
-**Shared Preferences:** shared_preference
-**Lint:** dart_code_metrics, flutter_lints
-**CI/CD:** Github Actions, Bitbucket Pipelines
-**Utils:** rxdart, dartx, async
-**Assets generator:** build-runner, flutter_launcher_icons, flutter_native_splash
+- **Architecture:** Clean Architecture 
+- **State management:** flutter_bloc
+- **DI:** get_it, injectable
+- **REST API:** dio
+- **Shared Preferences:** shared_preference
+- **Lint:** dart_code_metrics, flutter_lints
+- **CI/CD:** Github Actions, Bitbucket Pipelines
+- **Utils:** rxdart, dartx, async
+- **Assets generator:** build-runner, flutter_launcher_icons, flutter_native_splash
 
 ## 📁 Project Structure
 
