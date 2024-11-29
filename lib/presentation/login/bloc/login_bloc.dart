@@ -42,11 +42,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         false) {
       return;
     }
-    print('Username in state: ${state.username}');
-
     emit(state.copyWith(status: BlocStatus.loading));
-    print('Username after state: ${state.username}');
-
     try {
       await Future.delayed(const Duration(seconds: 2));
       await _loginUseCase.execute(

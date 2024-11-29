@@ -29,8 +29,8 @@ class ErrorHandler implements Exception {
             return DataSource.BAD_REQUEST.getFailure();
           case ResponseCode.FORBIDDEN:
             return DataSource.FORBIDDEN.getFailure();
-          case ResponseCode.UNAUTHORISED:
-            return DataSource.UNAUTHORISED.getFailure();
+          case ResponseCode.UNAUTHORIZE:
+            return DataSource.UNAUTHORIZE.getFailure();
           case ResponseCode.NOT_FOUND:
             return DataSource.NOT_FOUND.getFailure();
           case ResponseCode.INTERNAL_SERVER_ERROR:
@@ -61,9 +61,9 @@ extension DataSourceExtension on DataSource {
             ResponseCode.BAD_REQUEST, ResponseMessage.BAD_REQUEST.tr());
       case DataSource.FORBIDDEN:
         return Failure(ResponseCode.FORBIDDEN, ResponseMessage.FORBIDDEN.tr());
-      case DataSource.UNAUTHORISED:
+      case DataSource.UNAUTHORIZE:
         return Failure(
-            ResponseCode.UNAUTHORISED, ResponseMessage.UNAUTHORISED.tr());
+            ResponseCode.UNAUTHORIZE, ResponseMessage.UNAUTHORIZE.tr());
       case DataSource.NOT_FOUND:
         return Failure(ResponseCode.NOT_FOUND, ResponseMessage.NOT_FOUND.tr());
       case DataSource.INTERNAL_SERVER_ERROR:

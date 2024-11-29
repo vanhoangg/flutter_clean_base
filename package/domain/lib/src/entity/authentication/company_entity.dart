@@ -1,41 +1,13 @@
 import 'package:shared/shared.dart';
 
 import '../base_entity.dart';
-import '../entity.dart';
-
-class CoordinatesEntity extends BaseEntity {
-  final double lat;
-  final double lng;
-
-  CoordinatesEntity({
-    required this.lat,
-    required this.lng,
-  });
-
-  @override
-  CoordinatesEntity copyWith({
-    double? lat,
-    double? lng,
-  }) =>
-      CoordinatesEntity(
-        lat: lat ?? this.lat,
-        lng: lng ?? this.lng,
-      );
-
-  @override
-  factory CoordinatesEntity.defaultInstance() {
-    return CoordinatesEntity(
-      lat: ZERO.toDouble(),
-      lng: ZERO.toDouble(),
-    );
-  }
-}
+import 'address_entity.dart';
 
 class CompanyEntity extends BaseEntity {
   final String department;
   final String name;
   final String title;
-  final AddressEntity? address;
+  final AddressEntity address;
 
   CompanyEntity({
     required this.department,
@@ -57,4 +29,10 @@ class CompanyEntity extends BaseEntity {
         title: title ?? this.title,
         address: address ?? this.address,
       );
+
+  factory CompanyEntity.emptyObject() => CompanyEntity(
+      department: EMPTY,
+      name: EMPTY,
+      title: EMPTY,
+      address: AddressEntity.emptyObject());
 }

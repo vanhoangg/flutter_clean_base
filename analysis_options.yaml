@@ -19,6 +19,7 @@ analyzer:
   errors:
     unused_import: warning
     strict_raw_type: false
+    constant_identifier_names: false
     # invalid_annotation_target: ignore
 
 custom_lint:
@@ -108,7 +109,6 @@ linter:
     - eol_at_end_of_file
     - camel_case_extensions
     - camel_case_types
-    - constant_identifier_names: ignore
     - non_constant_identifier_names
     - prefer_relative_imports
     - use_super_parameters

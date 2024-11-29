@@ -1,1 +1,1 @@
-melos run build_all
+melos run force_build_all

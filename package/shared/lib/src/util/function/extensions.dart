@@ -26,6 +26,8 @@ extension ColorX on Color {
 
 const EMPTY = '';
 const ZERO = 0;
+const IDNullable = -1;
+const BOOL = false;
 
 extension NonNullString on String? {
   String orEmpty() {

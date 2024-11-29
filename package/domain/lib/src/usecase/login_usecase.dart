@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:shared/shared.dart';
 
-import '../entity/entity.dart';
+import '../entity/authentication/user_entity.dart';
 import '../repository/repository.dart';
 import 'base_usecase.dart';
 

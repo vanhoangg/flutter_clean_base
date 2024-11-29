@@ -9,87 +9,88 @@ import '../../model/responses/user/crypto_model.dart';
 import '../../model/responses/user/hair_model.dart';
 import '../../model/responses/user/user_model.dart';
 
-extension UserModelMapper on UserModel? {
-  UserEntity toDomain() => UserEntity(
-        id: this?.id ?? ZERO,
-        firstName: this?.firstName.orEmpty() ?? EMPTY,
-        lastName: this?.lastName.orEmpty() ?? EMPTY,
-        maidenName: this?.maidenName.orEmpty() ?? EMPTY,
-        age: this?.age ?? ZERO,
-        gender: this?.gender.orEmpty() ?? EMPTY,
-        email: this?.email.orEmpty() ?? EMPTY,
-        phone: this?.phone.orEmpty() ?? EMPTY,
-        username: this?.username.orEmpty() ?? EMPTY,
-        password: this?.password.orEmpty() ?? EMPTY,
-        birthDate: this?.birthDate.orEmpty() ?? EMPTY,
-        image: this?.image.orEmpty() ?? EMPTY,
-        bloodGroup: this?.bloodGroup.orEmpty() ?? EMPTY,
-        height: this?.height ?? ZERO.toDouble(),
-        weight: this?.weight ?? ZERO.toDouble(),
-        eyeColor: this?.eyeColor.orEmpty() ?? EMPTY,
-        ip: this?.ip.orEmpty() ?? EMPTY,
-        macAddress: this?.macAddress.orEmpty() ?? EMPTY,
-        university: this?.university.orEmpty() ?? EMPTY,
-        ein: this?.ein.orEmpty() ?? EMPTY,
-        ssn: this?.ssn.orEmpty() ?? EMPTY,
-        userAgent: this?.userAgent.orEmpty() ?? EMPTY,
-        role: this?.role.orEmpty() ?? EMPTY,
-        bank: this?.bank?.toDomain(),
-        company: this?.company?.toDomain(),
-        crypto: this?.crypto?.toDomain(),
-        address: this?.address?.toDomain(),
-        hair: this?.hair.toDomain(),
-      );
+extension UserModelMapper on UserModel {
+  UserEntity toDomain() {
+    return UserEntity(
+      id: id ?? ZERO,
+      firstName: firstName.orEmpty(),
+      lastName: lastName.orEmpty(),
+      maidenName: maidenName.orEmpty(),
+      age: age ?? ZERO,
+      gender: gender.orEmpty(),
+      email: email.orEmpty(),
+      phone: phone.orEmpty(),
+      username: username.orEmpty(),
+      password: password.orEmpty(),
+      birthDate: birthDate.orEmpty(),
+      image: image.orEmpty(),
+      bloodGroup: bloodGroup.orEmpty(),
+      height: height ?? ZERO.toDouble(),
+      weight: weight ?? ZERO.toDouble(),
+      eyeColor: eyeColor.orEmpty(),
+      ip: ip.orEmpty(),
+      macAddress: macAddress.orEmpty(),
+      university: university.orEmpty(),
+      ein: ein.orEmpty(),
+      ssn: ssn.orEmpty(),
+      userAgent: userAgent.orEmpty(),
+      role: role.orEmpty(),
+      bank: bank?.toDomain() ?? BankEntity.emptyObject(),
+      company: company?.toDomain() ?? CompanyEntity.emptyObject(),
+      crypto: crypto?.toDomain() ?? CryptoEntity.emptyObject(),
+      address: address?.toDomain() ?? AddressEntity.emptyObject(),
+      hair: hair?.toDomain() ?? HairEntity.emptyObject(),
+    );
+  }
 }
 
-extension HairModelMapper on HairModel? {
-  HairEntity toDomain() => HairEntity(
-      color: this?.color.orEmpty() ?? EMPTY,
-      type: this?.type.orEmpty() ?? EMPTY);
+extension HairModelMapper on HairModel {
+  HairEntity toDomain() =>
+      HairEntity(color: color.orEmpty(), type: type.orEmpty());
 }
 
-extension CryptoModelMapper on CryptoModel? {
+extension CryptoModelMapper on CryptoModel {
   CryptoEntity toDomain() => CryptoEntity(
-        coin: this?.coin.orEmpty() ?? EMPTY,
-        wallet: this?.wallet.orEmpty() ?? EMPTY,
-        network: this?.network.orEmpty() ?? EMPTY,
+        coin: coin.orEmpty(),
+        wallet: wallet.orEmpty(),
+        network: network.orEmpty(),
       );
 }
 
-extension CompanyModelMapper on CompanyModel? {
+extension CompanyModelMapper on CompanyModel {
   CompanyEntity toDomain() => CompanyEntity(
-        department: this?.department.orEmpty() ?? EMPTY,
-        name: this?.name.orEmpty() ?? EMPTY,
-        title: this?.title.orEmpty() ?? EMPTY,
-        address: this?.address?.toDomain(),
+        department: department.orEmpty(),
+        name: name.orEmpty(),
+        title: title.orEmpty(),
+        address: address?.toDomain() ?? AddressEntity.emptyObject(),
       );
 }
 
-extension BankModelMapper on BankModel? {
+extension BankModelMapper on BankModel {
   BankEntity toDomain() => BankEntity(
-        cardExpire: this?.cardExpire.orEmpty() ?? EMPTY,
-        cardNumber: this?.cardNumber.orEmpty() ?? EMPTY,
-        cardType: this?.cardType.orEmpty() ?? EMPTY,
-        currency: this?.currency.orEmpty() ?? EMPTY,
-        iban: this?.iban.orEmpty() ?? EMPTY,
+        cardExpire: cardExpire.orEmpty(),
+        cardNumber: cardNumber.orEmpty(),
+        cardType: cardType.orEmpty(),
+        currency: currency.orEmpty(),
+        iban: iban.orEmpty(),
       );
 }
 
-extension AddressModelMapper on AddressModel? {
+extension AddressModelMapper on AddressModel {
   AddressEntity toDomain() => AddressEntity(
-        address: this?.address.orEmpty() ?? EMPTY,
-        city: this?.city.orEmpty() ?? EMPTY,
-        state: this?.state.orEmpty() ?? EMPTY,
-        stateCode: this?.stateCode.orEmpty() ?? EMPTY,
-        postalCode: this?.postalCode.orEmpty() ?? EMPTY,
-        country: this?.country.orEmpty() ?? EMPTY,
-        coordinates: this?.coordinates?.toDomain(),
+        address: address.orEmpty(),
+        city: city.orEmpty(),
+        state: state.orEmpty(),
+        stateCode: stateCode.orEmpty(),
+        postalCode: postalCode.orEmpty(),
+        country: country.orEmpty(),
+        coordinates: coordinates?.toDomain() ?? CoordinatesEntity.emptyObject(),
       );
 }
 
-extension CoordinatesModelMapper on CoordinatesModel? {
+extension CoordinatesModelMapper on CoordinatesModel {
   CoordinatesEntity toDomain() => CoordinatesEntity(
-        lat: this?.lat ?? ZERO.toDouble(),
-        lng: this?.lng ?? ZERO.toDouble(),
+        lat: lat ?? ZERO.toDouble(),
+        lng: lng ?? ZERO.toDouble(),
       );
 }

@@ -3,7 +3,7 @@ import '../../network/authentication/auth_api_service.dart';
 import '../../model/request/login_request.dart';
 
 abstract class TodoDataSource {
-  Future<UserModel> login(LoginRequest loginRequest);
+  Future<UserModel?> login(LoginRequest loginRequest);
 }
 
 class TodoDataSourceImplementer implements TodoDataSource {
@@ -12,7 +12,7 @@ class TodoDataSourceImplementer implements TodoDataSource {
   TodoDataSourceImplementer(this._authServiceClient);
 
   @override
-  Future<UserModel> login(LoginRequest loginRequest) async {
+  Future<UserModel?> login(LoginRequest loginRequest) async {
     return await _authServiceClient.postLogin({
       'username': loginRequest.username,
       'password': loginRequest.password,

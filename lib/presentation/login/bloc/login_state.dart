@@ -52,7 +52,7 @@ class LoginState extends Equatable {
         username: EMPTY,
         password: EMPTY,
         isValidatedAll: false,
-        status: BlocStatus.inital,
+        status: BlocStatus.init,
         errorMessage: EMPTY,
         userData: null,
       );

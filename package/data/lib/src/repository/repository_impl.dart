@@ -27,7 +27,7 @@ class RepositoryImpl extends Repository {
         final response =
             await _remoteDataSource.login(LoginRequest(username, password));
 
-        return Right(response.toDomain());
+        return Right(response?.toDomain() ?? UserEntity.emptyObject());
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
       }

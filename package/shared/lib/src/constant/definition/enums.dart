@@ -3,7 +3,7 @@ enum DataSource {
   NO_CONTENT,
   BAD_REQUEST,
   FORBIDDEN,
-  UNAUTHORISED,
+  UNAUTHORIZE,
   NOT_FOUND,
   INTERNAL_SERVER_ERROR,
   CONNECT_TIMEOUT,
@@ -12,7 +12,7 @@ enum DataSource {
   SEND_TIMEOUT,
   CACHE_ERROR,
   NO_INTERNET_CONNECTION,
-  DEFAULT
+  DEFAULT;
 }
 
 enum Gender {
@@ -79,4 +79,4 @@ enum ChannelType { privateChat, bookingChat }
 
 enum FeedbackType { common, message, imageSharing, user, block }
 
-enum BlocStatus { inital, loading, success, failed }
+enum BlocStatus { init, loading, success, failed }

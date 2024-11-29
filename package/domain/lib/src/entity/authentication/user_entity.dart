@@ -1,6 +1,13 @@
-import '../entity.dart';
+import 'package:shared/shared.dart';
 
-class UserEntity {
+import '../base_entity.dart';
+import 'address_entity.dart';
+import 'bank_entity.dart';
+import 'company_entity.dart';
+import 'crypto_entity.dart';
+import 'hair_entity.dart';
+
+class UserEntity extends BaseEntity {
   final int id;
   final String firstName;
   final String lastName;
@@ -25,11 +32,11 @@ class UserEntity {
   final String ssn;
   final String userAgent;
 
-  final CryptoEntity? crypto;
-  final BankEntity? bank;
-  final CompanyEntity? company;
-  final HairEntity? hair;
-  final AddressEntity? address;
+  final CryptoEntity crypto;
+  final BankEntity bank;
+  final CompanyEntity company;
+  final HairEntity hair;
+  final AddressEntity address;
 
   UserEntity({
     required this.id,
@@ -62,6 +69,7 @@ class UserEntity {
     required this.role,
   });
 
+  @override
   UserEntity copyWith({
     int? id,
     String? firstName,
@@ -122,46 +130,33 @@ class UserEntity {
         crypto: crypto ?? this.crypto,
         role: role ?? this.role,
       );
-}
-
-class HairEntity {
-  final String color;
-  final String type;
-
-  HairEntity({
-    required this.color,
-    required this.type,
-  });
-
-  HairEntity copyWith({
-    String? color,
-    String? type,
-  }) =>
-      HairEntity(
-        color: color ?? this.color,
-        type: type ?? this.type,
-      );
-}
-
-class CryptoEntity {
-  final String coin;
-  final String wallet;
-  final String network;
-
-  CryptoEntity({
-    required this.coin,
-    required this.wallet,
-    required this.network,
-  });
-
-  CryptoEntity copyWith({
-    String? coin,
-    String? wallet,
-    String? network,
-  }) =>
-      CryptoEntity(
-        coin: coin ?? this.coin,
-        wallet: wallet ?? this.wallet,
-        network: network ?? this.network,
-      );
+  factory UserEntity.emptyObject() => UserEntity(
+      id: IDNullable,
+      firstName: EMPTY,
+      lastName: EMPTY,
+      maidenName: EMPTY,
+      age: ZERO,
+      gender: EMPTY,
+      email: EMPTY,
+      phone: EMPTY,
+      username: EMPTY,
+      password: EMPTY,
+      birthDate: EMPTY,
+      image: EMPTY,
+      bloodGroup: EMPTY,
+      height: ZERO.toDouble(),
+      weight: ZERO.toDouble(),
+      eyeColor: EMPTY,
+      hair: HairEntity.emptyObject(),
+      ip: EMPTY,
+      address: AddressEntity.emptyObject(),
+      macAddress: EMPTY,
+      university: EMPTY,
+      bank: BankEntity.emptyObject(),
+      company: CompanyEntity.emptyObject(),
+      ein: EMPTY,
+      ssn: EMPTY,
+      userAgent: EMPTY,
+      crypto: CryptoEntity.emptyObject(),
+      role: EMPTY);
 }

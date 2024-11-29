@@ -4,6 +4,7 @@ import 'package:shared/shared.dart';
 
 import '../../constant/end_point_constrants.dart';
 import '../../constant/query_params_constrants.dart';
+import '../../model/responses/base_list/list_pagination_model.dart';
 import '../../model/responses/user/user_model.dart';
 
 part 'auth_api_service.g.dart';
@@ -13,29 +14,29 @@ abstract class AuthServiceClient {
   factory AuthServiceClient(Dio dio, {String baseUrl}) = _AuthServiceClient;
 
   @POST(EndPoint.login)
-  Future<UserModel> postLogin(
+  Future<UserModel?> postLogin(
     @Body() Map<String, dynamic> body,
   );
   @GET(EndPoint.userDomain)
-  Future<List<UserModel>> getListUser();
+  Future<ListPaginationModel<UserModel?>> getListUser();
 
   @GET(EndPoint.searchUser)
-  Future<List<UserModel>> getSearchListUser(
+  Future<ListPaginationModel<UserModel?>> getSearchListUser(
     @Query(QueryParam.searchParams) String q,
   );
   @GET(EndPoint.filterUser)
-  Future<List<UserModel>> getFilterListUser(
+  Future<ListPaginationModel<UserModel?>> getFilterListUser(
     @Query(QueryParam.keyParams) String key,
     @Query(QueryParam.valueParams) String value,
   );
 
   @GET(EndPoint.userDetail)
-  Future<UserModel> getUserProfile(
+  Future<UserModel?> getUserProfile(
     @Path(QueryParam.userIdParams) String userId,
   );
 
   @PUT(EndPoint.userDetail)
-  Future<UserModel> putUpdateUserProfile(
+  Future<UserModel?> putUpdateUserProfile(
     @Path(QueryParam.userIdParams) String userId,
     @Body() Map<String, dynamic> body,
   );
@@ -46,16 +47,16 @@ abstract class AuthServiceClient {
   );
 
   @GET(EndPoint.userListCarts)
-  Future<UserModel> getUserCarts(
+  Future<UserModel?> getUserCarts(
     @Path(QueryParam.userIdParams) String userId,
   );
   @GET(EndPoint.userListTodos)
-  Future<UserModel> getUserTodos(
+  Future<UserModel?> getUserTodos(
     @Path(QueryParam.userIdParams) String userId,
   );
 
   @GET(EndPoint.userListPosts)
-  Future<UserModel> getUserPosts(
+  Future<UserModel?> getUserPosts(
     @Path(QueryParam.userIdParams) String userId,
   );
   @PUT(EndPoint.todoDetail)

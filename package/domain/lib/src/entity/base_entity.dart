@@ -1,5 +1,5 @@
-abstract class BaseEntity<T> {
+abstract class BaseEntity<E> {
   const BaseEntity();
 
-  T copyWith();
+  E copyWith();
 }

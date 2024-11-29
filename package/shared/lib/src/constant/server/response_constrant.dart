@@ -6,7 +6,7 @@ class ResponseCode {
   static const int NO_CONTENT = 201; // success with no content
   static const int BAD_REQUEST = 400; // failure, api rejected the request
   static const int FORBIDDEN = 403; // failure, api rejected the request
-  static const int UNAUTHORISED = 401; // failure user is not authorised
+  static const int UNAUTHORIZE = 401; // failure user is not authorize
   static const int NOT_FOUND =
       404; // failure, api url is not correct and not found
   static const int INTERNAL_SERVER_ERROR =
@@ -32,8 +32,8 @@ class ResponseMessage {
       AppStrings.badRequestError; // failure, api rejected our request
   static const String FORBIDDEN =
       AppStrings.forbiddenError; // failure,  api rejected our request
-  static const String UNAUTHORISED =
-      AppStrings.unauthorizedError; // failure, user is not authorised
+  static const String UNAUTHORIZE =
+      AppStrings.unauthorizedError; // failure, user is not authorize
   static const String NOT_FOUND = AppStrings
       .notFoundError; // failure, API url is not correct and not found in api side.
   static const String INTERNAL_SERVER_ERROR =

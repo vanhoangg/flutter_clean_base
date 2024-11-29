@@ -1,4 +1,8 @@
-class BankEntity {
+import 'package:shared/shared.dart';
+
+import '../base_entity.dart';
+
+class BankEntity implements BaseEntity<BankEntity> {
   final String cardExpire;
   final String cardNumber;
   final String cardType;
@@ -13,6 +17,15 @@ class BankEntity {
     required this.iban,
   });
 
+  factory BankEntity.emptyObject() => BankEntity(
+        cardExpire: EMPTY,
+        cardNumber: EMPTY,
+        cardType: EMPTY,
+        currency: EMPTY,
+        iban: EMPTY,
+      );
+
+  @override
   BankEntity copyWith({
     String? cardExpire,
     String? cardNumber,

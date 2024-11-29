@@ -54,8 +54,6 @@ class _LoginScreenState extends BaseState<LoginScreen> {
               return;
             case BlocStatus.success:
               widgetUtil.dismissDialog(context);
-
-              // TODO(Hoang): Navigate to home screen
               _navigatorToHomeScreen();
               return;
             case BlocStatus.failed:

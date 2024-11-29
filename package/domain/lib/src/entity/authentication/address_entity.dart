@@ -1,5 +1,7 @@
+import 'package:shared/shared.dart';
+
 import '../base_entity.dart';
-import '../entity.dart';
+import 'coordinates_entity.dart';
 
 class AddressEntity extends BaseEntity {
   final String address;
@@ -7,7 +9,7 @@ class AddressEntity extends BaseEntity {
   final String state;
   final String stateCode;
   final String postalCode;
-  final CoordinatesEntity? coordinates;
+  final CoordinatesEntity coordinates;
   final String country;
 
   AddressEntity({
@@ -39,4 +41,13 @@ class AddressEntity extends BaseEntity {
         coordinates: coordinates ?? this.coordinates,
         country: country ?? this.country,
       );
+
+  factory AddressEntity.emptyObject() => AddressEntity(
+      address: EMPTY,
+      city: EMPTY,
+      state: EMPTY,
+      stateCode: EMPTY,
+      postalCode: EMPTY,
+      coordinates: CoordinatesEntity.emptyObject(),
+      country: EMPTY);
 }
