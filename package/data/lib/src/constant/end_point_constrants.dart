@@ -9,8 +9,8 @@ abstract class EndPoint {
   static const String chatDomain = '/chat';
   static const String walletDomain = '/app/wallet';
   static const String fileDomain = '/file';
-  static const String authDomain = 'auth';
-  static const String userDomain = 'users';
+  static const String authDomain = '/auth';
+  static const String userDomain = '/users';
 
   static const String login = '$authDomain/login';
   static const String searchUser = '$userDomain/search';

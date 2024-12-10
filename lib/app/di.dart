@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:get_it/get_it.dart';
@@ -14,9 +13,6 @@ Future<void> initAppModule() async {
   // shared prefs instance
   final sharedPrefs = await SharedPreferences.getInstance();
 
-  // network info
-  final connectivityResult = await Connectivity().checkConnectivity();
-
   // app  service client
 
   instance
@@ -24,8 +20,6 @@ Future<void> initAppModule() async {
 
     // app prefs instance
     ..registerLazySingleton<AppPreferences>(() => AppPreferences(instance()))
-    ..registerLazySingleton<NetworkInfo>(
-        () => NetworkInfoImpl(connectivityResult))
 
     // dio factory
     ..registerLazySingleton<DioFactory>(() => DioFactory(instance()))

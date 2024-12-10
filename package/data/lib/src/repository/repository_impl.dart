@@ -3,37 +3,111 @@ import 'package:dartz/dartz.dart';
 import 'package:domain/domain.dart';
 import 'package:shared/shared.dart';
 
-import '../data_source/authentication/auth_data_source.dart';
-import '../data_source/local/local_data_source.dart';
-import '../mapper/user/user_mapper.dart';
-import '../model/request/login_request.dart';
-import '../network/error_handler.dart';
-import '../network/network_info.dart';
+import '../network/data_source/auth_data_source.dart';
+import '../local/data_source/local_data_source.dart';
+import '../network/data_source/user_data_source.dart';
+
+import '../network/mapper/user/user_mapper.dart';
+import '../network/model/request/login_request.dart';
+import '../network/client/base/error_handler.dart';
 
 class RepositoryImpl extends Repository {
-  final AuthDataSource _remoteDataSource;
+  final AuthDataSource _authDataSource;
+  // ignore: unused_field
   final LocalDataSource _localDataSource;
-  final NetworkInfo _networkInfo;
+  final UserDataSource _userDataSource;
 
   RepositoryImpl(
-      this._remoteDataSource, this._localDataSource, this._networkInfo);
+    this._authDataSource,
+    this._localDataSource,
+    this._userDataSource,
+  );
 
   @override
   Future<Either<Failure, UserEntity>> login(
       String username, String password) async {
-    if (await _networkInfo.isConnected) {
-      try {
-        // its safe to call the API
-        final response =
-            await _remoteDataSource.login(LoginRequest(username, password));
+    try {
+      // its safe to call the API
+      final response =
+          await _authDataSource.login(LoginRequest(username, password));
 
-        return Right(response?.toDomain() ?? UserEntity.emptyObject());
-      } catch (error) {
-        return Left(ErrorHandler.handle(error).failure);
-      }
-    } else {
-      // return connection error
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+      return Right(response?.toDomain() ?? UserEntity.emptyObject());
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserEntity>>> getFilterListUser(
+      {required String queryKey, required String value}) async {
+    try {
+      // its safe to call the API
+      final response = await _userDataSource.getFilterListUser(
+          queryKey: queryKey, value: value);
+      final result = response?.items
+              ?.map((e) => e?.toDomain() ?? UserEntity.emptyObject())
+              .toList() ??
+          [];
+      return Right(result);
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserEntity>>> getListUser() async {
+    try {
+      // its safe to call the API
+      final response = await _userDataSource.getListUser();
+      final result = response?.items
+              ?.map((e) => e?.toDomain() ?? UserEntity.emptyObject())
+              .toList() ??
+          [];
+      return Right(result);
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserEntity>>> getSearchListUser(
+      {required String searchParams}) async {
+    try {
+      // its safe to call the API
+      final response =
+          await _userDataSource.getSearchListUser(searchParams: searchParams);
+      final result = response?.items
+              ?.map((e) => e?.toDomain() ?? UserEntity.emptyObject())
+              .toList() ??
+          [];
+      return Right(result);
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> getUserProfile(
+      {required String userId}) async {
+    try {
+      // its safe to call the API
+      final response = await _userDataSource.getUserProfile(userId: userId);
+      return Right(response?.toDomain() ?? UserEntity.emptyObject());
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> updateUserProfile(
+      {required String userId, required Map<String, dynamic> body}) async {
+    try {
+      // its safe to call the API
+      final response =
+          await _userDataSource.updateUserProfile(userId: userId, body: body);
+      return Right(response?.toDomain() ?? UserEntity.emptyObject());
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
     }
   }
 }
