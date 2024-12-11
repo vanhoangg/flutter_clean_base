@@ -17,7 +17,7 @@ class DataResponse<T> {
     print('DataResponse from key: ${T.toString()}');
 
     return DataResponse(
-      data: json[T.toString()] == null ? null : fromJsonT(json[T.toString()]),
+      data: fromJsonT(json),
     );
   }
 

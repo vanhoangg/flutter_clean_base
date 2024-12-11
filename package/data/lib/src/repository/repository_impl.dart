@@ -30,8 +30,9 @@ class RepositoryImpl extends Repository {
       // its safe to call the API
       final response =
           await _authDataSource.login(LoginRequest(username, password));
+      final result = response?.data?.toDomain() ?? UserEntity.emptyObject();
 
-      return Right(response?.toDomain() ?? UserEntity.emptyObject());
+      return Right(result);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }

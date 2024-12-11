@@ -1,11 +1,12 @@
 import '../../constant/end_point_constrants.dart';
 import '../client/auth_app_server_api_client.dart';
 import '../client/base/rest_api_client.dart';
+import '../model/responses/base/data_response.dart';
 import '../model/responses/user/user_model.dart';
 import '../model/request/login_request.dart';
 
 abstract class AuthDataSource {
-  Future<UserModel?> login(LoginRequest loginRequest);
+  Future<DataResponse<UserModel?>?> login(LoginRequest loginRequest);
 }
 
 class AuthDataSourceImplementer implements AuthDataSource {
@@ -14,7 +15,7 @@ class AuthDataSourceImplementer implements AuthDataSource {
   AuthDataSourceImplementer(this._authAppServerApiClient);
 
   @override
-  Future<UserModel?> login(LoginRequest loginRequest) async {
+  Future<DataResponse<UserModel?>?> login(LoginRequest loginRequest) async {
     return _authAppServerApiClient.request(
         method: RestMethod.post,
         path: EndPoint.login,

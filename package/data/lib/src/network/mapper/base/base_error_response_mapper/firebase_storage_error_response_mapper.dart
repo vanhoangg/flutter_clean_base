@@ -6,10 +6,10 @@ import '../base_error_response_mapper.dart';
 class FirebaseStorageErrorResponseMapper
     extends BaseErrorResponseMapper<Map<String, dynamic>> {
   @override
-  ServerError mapToServerError(Map<String, dynamic>? json) {
+  ServerError mapToServerError(Map<String, dynamic>? errorResponse) {
     return ServerError(
-      generalServerStatusCode: json?['error']['code'] as int?,
-      generalMessage: json?['error']['message'] as String?,
+      generalServerStatusCode: errorResponse?['error']['code'] as int?,
+      generalMessage: errorResponse?['error']['message'] as String?,
     );
   }
 }

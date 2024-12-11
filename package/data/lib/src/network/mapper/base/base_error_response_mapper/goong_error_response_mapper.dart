@@ -5,9 +5,9 @@ import '../base_error_response_mapper.dart';
 class GoongErrorResponseMapper
     extends BaseErrorResponseMapper<Map<String, dynamic>> {
   @override
-  ServerError mapToServerError(Map<String, dynamic>? json) {
+  ServerError mapToServerError(Map<String, dynamic>? errorResponse) {
     return ServerError(
-      generalMessage: json?['error']['message'] as String?,
+      generalMessage: errorResponse?['error']['message'] as String?,
     );
   }
 }

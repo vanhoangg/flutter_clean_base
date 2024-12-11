@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared/shared.dart';
@@ -29,7 +30,7 @@ class _LoginScreenState extends BaseState<LoginScreen> {
         () => _bloc.add(ChangeUserNameEvent(_userNameController.text)));
     _passwordController.addListener(
         () => _bloc.add(ChangePasswordEvent(_passwordController.text)));
-    if (AppConstant.developerMode) {
+    if (kDebugMode) {
       _userNameController.text = 'emilys';
       _passwordController.text = 'emilyspass';
     }

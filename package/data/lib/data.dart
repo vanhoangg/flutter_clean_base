@@ -1,24 +1,3 @@
-library data;
+library;
 
-export 'src/network/data_source/auth_data_source.dart';
-export 'src/local/data_source/local_data_source.dart';
-export 'src/network/mapper/user/user_mapper.dart';
-export 'src/network/model/request/login_request.dart';
-export 'src/network/model/responses/post/post_model.dart';
-export 'src/network/model/responses/post/reaction_model.dart';
-export 'src/network/model/responses/product/dimension_model.dart';
-export 'src/network/model/responses/product/meta_model.dart';
-export 'src/network/model/responses/product/product_model.dart';
-export 'src/network/model/responses/product/review_model.dart';
-export 'src/network/model/responses/todo/todo_model.dart';
-export 'src/network/model/responses/user/address_model.dart';
-export 'src/network/model/responses/user/bank_model.dart';
-export 'src/network/model/responses/user/company_model.dart';
-export 'src/network/model/responses/user/coordinates_model.dart';
-export 'src/network/model/responses/user/crypto_model.dart';
-export 'src/network/model/responses/user/hair_model.dart';
-export 'src/network/model/responses/user/list_user_model.dart';
-export 'src/network/model/responses/user/user_model.dart';
-export 'src/network/client/base/error_handler.dart';
-export 'src/repository/repository_impl.dart';
-export 'src/app_prefs.dart';
+export 'src/src.dart';

@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import '../../../app/di.dart';
+import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shared/shared.dart';
@@ -10,6 +12,7 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginUseCase _loginUseCase;
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   LoginBloc(this._loginUseCase) : super(LoginState.init()) {
     on<ChangeUserNameEvent>(_onUsernameChanged);
@@ -53,7 +56,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             state.copyWith(
                 status: BlocStatus.failed, errorMessage: failure.message),
           ),
-          (success) {
+          (success) async {
+            if (success.accessToken.orEmpty().isNotEmpty) {
+              await Future.wait([
+                _appPreferences.setUserToken(success.accessToken!),
+                _appPreferences.setIsUserLoggedIn()
+              ]);
+            }
             emit(
               state.copyWith(status: BlocStatus.success, userData: success),
             );

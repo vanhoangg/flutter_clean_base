@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../../../../../data.dart';
-import '../../constant/request_constants.dart';
-import 'base_interceptor.dart';
 
 class AccessTokenInterceptor extends BaseInterceptor {
   AccessTokenInterceptor(this._appPreferences);

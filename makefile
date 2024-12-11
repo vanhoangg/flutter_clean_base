@@ -133,7 +133,7 @@ force_watch_shared:
 	@melos run force_watch_shared
 
 run_dev:
-	cd tools && $(BUILD_CMD) develop run
+	cd tools && $(BUILD_CMD) dev run
 
 run_qa:
 	cd tools && $(BUILD_CMD) qa run

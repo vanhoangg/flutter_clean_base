@@ -31,6 +31,8 @@ class UserEntity extends BaseEntity {
   final String ein;
   final String ssn;
   final String userAgent;
+  final String? accessToken;
+  final String? refreshToken;
 
   final CryptoEntity crypto;
   final BankEntity bank;
@@ -67,6 +69,8 @@ class UserEntity extends BaseEntity {
     required this.userAgent,
     required this.crypto,
     required this.role,
+    required this.accessToken,
+    required this.refreshToken,
   });
 
   @override
@@ -99,6 +103,8 @@ class UserEntity extends BaseEntity {
     String? userAgent,
     CryptoEntity? crypto,
     String? role,
+    String? accessToken,
+    String? refreshToken,
   }) =>
       UserEntity(
         id: id ?? this.id,
@@ -129,6 +135,8 @@ class UserEntity extends BaseEntity {
         userAgent: userAgent ?? this.userAgent,
         crypto: crypto ?? this.crypto,
         role: role ?? this.role,
+        refreshToken: refreshToken ?? this.refreshToken,
+        accessToken: accessToken ?? this.accessToken,
       );
   factory UserEntity.emptyObject() => UserEntity(
       id: IDNullable,
@@ -158,5 +166,7 @@ class UserEntity extends BaseEntity {
       ssn: EMPTY,
       userAgent: EMPTY,
       crypto: CryptoEntity.emptyObject(),
-      role: EMPTY);
+      role: EMPTY,
+      accessToken: EMPTY,
+      refreshToken: EMPTY);
 }

@@ -40,6 +40,8 @@ extension UserModelMapper on UserModel {
       crypto: crypto?.toDomain() ?? CryptoEntity.emptyObject(),
       address: address?.toDomain() ?? AddressEntity.emptyObject(),
       hair: hair?.toDomain() ?? HairEntity.emptyObject(),
+      accessToken: accessToken ?? EMPTY,
+      refreshToken: refreshToken ?? EMPTY,
     );
   }
 }

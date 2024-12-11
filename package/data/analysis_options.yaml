@@ -32,13 +32,13 @@ custom_lint:
 linter:
   rules:
     - always_declare_return_types
-    - always_put_control_body_on_new_line
+
     - always_put_required_named_parameters_first
     - annotate_overrides
     #    - avoid_dynamic_calls
     - avoid_empty_else
     - avoid_init_to_null
-    - avoid_multiple_declarations_per_line
+
     - avoid_null_checks_in_equality_operators
     # - avoid_print
     #    - avoid_redundant_argument_values
