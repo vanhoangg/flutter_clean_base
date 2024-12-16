@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:data/data.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../app/di.dart';
@@ -25,10 +26,10 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> _goNext() async {
     // Debug
-    // if (kDebugMode) {
-    //   await Navigator.pushReplacementNamed(context, Routes.loginRoute);
-    //   return;
-    // }
+    if (kDebugMode) {
+      await Navigator.pushReplacementNamed(context, Routes.mainRoute);
+      return;
+    }
 
     // Release
     final bool isUserLoggedIn = await _appPreferences.isUserLoggedIn();

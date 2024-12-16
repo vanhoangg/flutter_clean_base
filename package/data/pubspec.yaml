@@ -5,11 +5,13 @@ publish_to: none
 homepage: null
 
 environment:
-  sdk: ^3.5.4
-  flutter: ">=1.17.0"
+  sdk: ^3.6.0
+
+resolution: workspace
 
 dependencies:
   connectivity_plus: ^6.1.0
+  json: ^0.20.4
   dartx: ^1.2.0
   dartz: ^0.10.1
   dio: ^5.7.0

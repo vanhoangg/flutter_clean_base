@@ -5,6 +5,7 @@ import 'package:shared/shared.dart';
 
 import '../base/base_state.dart';
 import '../home/home_screen.dart';
+import '../video_player/default_player/default_player.dart';
 import 'notifications_page.dart';
 import 'search_page.dart';
 import 'settings_page.dart';
@@ -35,7 +36,20 @@ class _MainScreenState extends BaseState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_currentIndex],
+      body: Stack(
+        children: [
+          pages[_currentIndex],
+          GestureDetector(
+            onPanDown: (details) {
+              playerController.onChangeSizeState();
+            },
+            child: const Align(
+              alignment: Alignment.bottomCenter,
+              child: DefaultPlayer(),
+            ),
+          )
+        ],
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(color: ColorManager.lightGrey, spreadRadius: AppSize.s1)

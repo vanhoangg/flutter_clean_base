@@ -4,12 +4,14 @@ import '../../app/di.dart';
 import 'package:shared/shared.dart';
 
 import '../../app/widget_util.dart';
+import '../video_player/default_player/player_controller.dart';
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   Route get route => instance();
 
   String get name => widget.runtimeType.toString();
   WidgetUtil get widgetUtil => instance();
+  PlayerController get playerController => instance();
 
   Size get deviceSize => MediaQuery.sizeOf(context);
 

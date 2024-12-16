@@ -148,8 +148,6 @@ class WidgetUtil {
       case StateRendererType.EMPTY_SCREEN_STATE:
         return _getItemsInColumn(
             [_getAnimatedImage(JsonAssets.empty), _getMessage(message)]);
-      default:
-        return Container();
     }
   }
 

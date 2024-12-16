@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../presentation/login/bloc/login_bloc.dart';
 
+import '../presentation/video_player/default_player/player_controller.dart';
 import 'widget_util.dart';
 
 final instance = GetIt.instance;
@@ -25,6 +26,7 @@ Future<void> initAppModule() async {
     ..registerLazySingleton<AppPreferences>(
       () => AppPreferences(instance()),
     )
+    ..registerCachedFactory<PlayerController>(() => PlayerController())
     // dio factory
     ..registerLazySingleton<WidgetUtil>(() => WidgetUtil())
     ..registerLazySingleton<AccessTokenInterceptor>(

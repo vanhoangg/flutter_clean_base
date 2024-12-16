@@ -18,19 +18,18 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.5 <4.0.0"
-
+  sdk: ">=3.6.0-edge <4.0.0"
+workspace:
+  - package/domain
+  - package/shared
+  - package/data
 dependencies:
   analyzer: null
   cached_network_image: ^3.4.1
   carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
-  data:
-    path: ./package/data
   decimal: ^3.0.2
-  domain:
-    path: ./package/domain
   equatable: ^2.0.5
 
   flutter:
@@ -38,16 +37,11 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_phoenix: ^1.1.1
   flutter_svg: ^2.0.14
-  freezed: ^2.5.7
-  freezed_annotation: any
   get_it: ^8.0.2
   google_fonts: ^6.2.1
   intl_utils: ^2.8.7
-  json_annotation: ^4.9.0
   overlay_support: ^2.1.0
   rxdart: ^0.28.0
-  shared:
-    path: ./package/shared
   # Video Player
   flick_video_player: ^0.9.0
   video_player: ^2.9.2
@@ -62,7 +56,6 @@ dev_dependencies:
   # json_serializable: ^6.8.0
   # retrofit_generator: ^9.1.4
   logger: ^2.4.0
-  melos: ^6.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

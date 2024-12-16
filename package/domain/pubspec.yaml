@@ -5,8 +5,8 @@ publish_to: none
 homepage: null
 
 environment:
-  sdk: ^3.5.4
-  flutter: ">=1.17.0"
+  sdk: ^3.6.0
+resolution: workspace
 
 dependencies:
   dartz: ^0.10.1

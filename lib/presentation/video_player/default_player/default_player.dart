@@ -4,6 +4,8 @@ import 'package:visibility_detector/visibility_detector.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../utils/mock_data.dart';
+import '../../presentation.dart';
+import 'player_controller.dart';
 
 class DefaultPlayer extends StatefulWidget {
   const DefaultPlayer({super.key});
@@ -12,11 +14,14 @@ class DefaultPlayer extends StatefulWidget {
   _DefaultPlayerState createState() => _DefaultPlayerState();
 }
 
-class _DefaultPlayerState extends State<DefaultPlayer> {
+class _DefaultPlayerState extends BaseState<DefaultPlayer> {
   late FlickManager flickManager;
+
   @override
   void initState() {
     super.initState();
+    playerController.addListener(() => _updateChangePlayer);
+
     flickManager = FlickManager(
       videoPlayerController: VideoPlayerController.networkUrl(
         Uri.parse(mockData['items'][0]['trailer_url']),
@@ -48,10 +53,14 @@ class _DefaultPlayerState extends State<DefaultPlayer> {
   //     return SubRipCaptionFile('');
   //   }
   //}
+  void _updateChangePlayer() {
+    setState(() {});
+  }
 
   @override
   void dispose() {
     flickManager.dispose();
+    playerController.removeListener(() => _updateChangePlayer);
     super.dispose();
   }
 
@@ -66,14 +75,18 @@ class _DefaultPlayerState extends State<DefaultPlayer> {
           flickManager.flickControlManager?.autoResume();
         }
       },
-      child: FlickVideoPlayer(
-        flickManager: flickManager,
-        flickVideoWithControls: const FlickVideoWithControls(
-          closedCaptionTextStyle: TextStyle(fontSize: 8),
-          controls: FlickPortraitControls(),
-        ),
-        flickVideoWithControlsFullscreen: const FlickVideoWithControls(
-          controls: FlickLandscapeControls(),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: playerController.size == PlayerSizeState.minimize ? 400 : 800,
+        child: FlickVideoPlayer(
+          flickManager: flickManager,
+          flickVideoWithControls: const FlickVideoWithControls(
+            closedCaptionTextStyle: TextStyle(fontSize: 8),
+            controls: FlickPortraitControls(),
+          ),
+          flickVideoWithControlsFullscreen: const FlickVideoWithControls(
+            controls: FlickLandscapeControls(),
+          ),
         ),
       ),
     );

@@ -1,4 +1,6 @@
 analyzer:
+  enable-experiment:
+    - macros
   plugins:
     - custom_lint
   exclude:
