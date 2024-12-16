@@ -5,7 +5,7 @@ import 'package:shared/shared.dart';
 
 import '../base/base_state.dart';
 import '../home/home_screen.dart';
-import '../video_player/default_player/default_player.dart';
+import '../video_player/default_player/player_controller.dart';
 import 'notifications_page.dart';
 import 'search_page.dart';
 import 'settings_page.dart';
@@ -32,23 +32,34 @@ class _MainScreenState extends BaseState<MainScreen> {
   ];
   var _title = AppStrings.home.tr();
   var _currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    playerController.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    playerController.removeListener(() => null);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          pages[_currentIndex],
-          GestureDetector(
-            onPanDown: (details) {
-              playerController.onChangeSizeState();
-            },
-            child: const Align(
-              alignment: Alignment.bottomCenter,
-              child: DefaultPlayer(),
-            ),
-          )
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            pages[_currentIndex],
+            Offstage(
+              offstage: playerController.size == PlayerSizeState.off,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: playerController.child,
+              ),
+            )
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(boxShadow: [
