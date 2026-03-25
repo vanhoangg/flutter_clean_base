@@ -31,6 +31,7 @@ dependencies:
   dartz: ^0.10.1
   decimal: ^3.0.2
   equatable: ^2.0.5
+  connectivity_plus: ^6.1.0
 
   flutter:
     sdk: flutter

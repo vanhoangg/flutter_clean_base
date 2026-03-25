@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:shared/shared.dart';
 
+import '../../utils/stack_player_animation_widget.dart';
 import '../base/base_state.dart';
 import '../home/home_screen.dart';
-import '../video_player/default_player/player_controller.dart';
+
 import 'notifications_page.dart';
 import 'search_page.dart';
 import 'settings_page.dart';
@@ -32,6 +33,8 @@ class _MainScreenState extends BaseState<MainScreen> {
   ];
   var _title = AppStrings.home.tr();
   var _currentIndex = 0;
+  final GlobalKey bottomNavigationBarKey =
+      GlobalKey(debugLabel: 'bottom_navigation_bar');
   @override
   void initState() {
     super.initState();
@@ -48,24 +51,18 @@ class _MainScreenState extends BaseState<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: [
-            pages[_currentIndex],
-            Offstage(
-              offstage: playerController.size == PlayerSizeState.off,
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: playerController.child,
-              ),
-            )
-          ],
+        maintainBottomViewPadding: true,
+        child: StackPlayerAnimation(
+          parent: pages[_currentIndex],
         ),
       ),
       bottomNavigationBar: Container(
+        key: bottomNavigationBarKey,
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(color: ColorManager.lightGrey, spreadRadius: AppSize.s1)
         ]),
         child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           selectedItemColor: ColorManager.primary,
           unselectedItemColor: ColorManager.grey,
           currentIndex: _currentIndex,

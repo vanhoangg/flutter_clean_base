@@ -25,6 +25,8 @@ class CustomPortraitControls extends BaseStateLess {
   /// [FlickProgressBarSettings] settings.
   final FlickProgressBarSettings? progressBarSettings;
 
+  final double defaultMargin = 10;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -113,19 +115,34 @@ class CustomPortraitControls extends BaseStateLess {
           ),
         ),
         Positioned(
-          top: 10,
-          left: 10,
+          top: defaultMargin,
+          left: defaultMargin,
           child: Offstage(
             offstage: playerController.size != PlayerSizeState.full,
             child: GestureDetector(
               onTap: () {
                 playerController.onChangeSizeState();
               },
-              child: Container(
-                  height: 24,
-                  width: 24,
-                  color: Colors.blue,
-                  child: const Icon(Icons.abc)),
+              child: SizedBox(
+                  height: iconSize,
+                  width: iconSize,
+                  child: const Center(child: Icon(Icons.arrow_downward))),
+            ),
+          ),
+        ),
+        Positioned(
+          top: defaultMargin,
+          left: MediaQuery.sizeOf(context).width - defaultMargin - iconSize,
+          child: Offstage(
+            offstage: playerController.size != PlayerSizeState.full,
+            child: GestureDetector(
+              onTap: () {
+                playerController.onDismissPlayer();
+              },
+              child: SizedBox(
+                  height: iconSize,
+                  width: iconSize,
+                  child: const Icon(Icons.close)),
             ),
           ),
         ),

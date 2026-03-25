@@ -20,7 +20,6 @@ flutter_lints: ^5.0.0
 flutter_flavorizr: ^2.2.3
 melos: ^6.2.0
 logger: ^2.4.0
-connectivity_plus: ^6.1.0
 dartx: ^1.2.0
 dio: ^5.7.0
 shared_preferences: ^2.3.3
